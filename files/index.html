@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>CAMPUS GAMMA — La universidad de los tardeos · Centro, Bogotá</title>
+<meta name="description" content="Campus Gamma. La universidad de los tardeos en el corazón del centro de Bogotá. Av. Jiménez #5-40. Matrículas abiertas." />
+<meta property="og:title" content="CAMPUS GAMMA — La universidad de los tardeos" />
+<meta property="og:description" content="No es una fiesta. Es una etapa. Av. Jiménez #5-40, Centro de Bogotá." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#07120c" />
+<link rel="canonical" href="https://campus-gamma.pages.dev/" />
+<meta name="robots" content="index,follow" />
+<meta property="og:locale" content="es_CO" />
+<meta property="og:site_name" content="Campus Gamma" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"NightClub",
+  "name":"Campus Gamma",
+  "slogan":"La universidad de los tardeos",
+  "description":"Campus Gamma — la sede del centro. Música, ambiente y fiesta en el corazón de Bogotá.",
+  "address":{"@type":"PostalAddress","streetAddress":"Av. Jiménez #5-40","addressLocality":"Bogotá","addressRegion":"Bogotá D.C.","addressCountry":"CO"},
+  "areaServed":"Bogotá",
+  "sameAs":["https://instagram.com/campusgamma.bogota"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Graduate&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+<noscript><style>
+  .course,.stamp,.seal,.wordmark .ch,.tagline,.hero__meta,.hero__cta,.coming,.scrollcue{opacity:1!important;transform:none!important}
+  .wa-fab{display:none!important}
+</style></noscript>
+
+<style>
+  :root{
+    color-scheme: dark;
+    --ink:      #07120c;
+    --ink-2:    #0b1d13;
+    --ink-3:    #10271a;
+    --bone:     #f2e9d2;
+    --bone-dim: #b9b199;
+    --acid:     #2dff7f;
+    --acid-soft:#7dffb0;
+    --acid-dim: #156f3c;
+    --amber:    #ff7a2b;
+    --haze:     #5a2bff;
+
+    --maxw: 1180px;
+    --gutter: clamp(20px, 5vw, 64px);
+
+    --safe-t: env(safe-area-inset-top, 0px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+
+    --f-display: "Anton", "Arial Narrow", sans-serif;
+    --f-crest:   "Graduate", "Times New Roman", serif;
+    --f-body:    "Space Grotesk", system-ui, sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; scroll-padding-top: calc(72px + var(--safe-t)); -webkit-text-size-adjust:100%; }
+
+  body{
+    font-family:var(--f-body);
+    background:var(--ink);
+    color:var(--bone);
+    line-height:1.5;
+    overflow-x:hidden;
+    padding-top: var(--safe-t);
+    padding-bottom: var(--safe-b);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* fixed background layer behind everything: the "club" atmosphere */
+  .atmos{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .atmos .glow{
+    position:absolute; border-radius:50%; filter:blur(70px); opacity:.55;
+    mix-blend-mode:screen;
+  }
+  .atmos .g1{ width:60vw; height:60vw; left:-14vw; top:-18vw; background:radial-gradient(circle,var(--acid),transparent 65%); }
+  .atmos .g2{ width:55vw; height:55vw; right:-18vw; top:24vh; background:radial-gradient(circle,var(--haze),transparent 60%); opacity:.4; }
+  .atmos .g3{ width:50vw; height:50vw; left:28vw; bottom:-22vw; background:radial-gradient(circle,var(--amber),transparent 62%); opacity:.28; }
+
+  /* film grain */
+  .grain{
+    position:fixed; inset:-50%; z-index:60; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 1.1s steps(3) infinite;
+    mix-blend-mode:overlay;
+  }
+  @keyframes grain{ 0%{transform:translate(0,0)} 33%{transform:translate(-4%,2%)} 66%{transform:translate(3%,-3%)} 100%{transform:translate(0,0)} }
+
+  /* subtle scanline for the neon-sign feel */
+  .scan{
+    position:fixed; inset:0; z-index:59; pointer-events:none; opacity:.06;
+    background:repeating-linear-gradient(to bottom, #000 0 1px, transparent 1px 3px);
+  }
+
+  .wrap{ position:relative; z-index:1; }
+  .container{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--acid); outline-offset:3px; border-radius:2px; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px var(--gutter);
+    padding-top: calc(14px + var(--safe-t));
+    backdrop-filter:blur(8px);
+    background:linear-gradient(to bottom, rgba(7,18,12,.85), rgba(7,18,12,0));
+    transition:background .3s ease;
+  }
+  body::before{ content:""; position:fixed; inset:0 0 auto; height:var(--safe-t); z-index:51; background:var(--ink); }
+  .nav.solid{ background:rgba(7,18,12,.92); border-bottom:1px solid rgba(45,255,127,.14); }
+  .nav__brand{ display:flex; align-items:center; gap:10px; font-family:var(--f-crest); letter-spacing:.06em; font-size:15px; color:var(--bone); text-decoration:none; }
+  .nav__gamma{
+    width:30px; height:30px; display:grid; place-items:center; flex:none;
+    border:1.5px solid var(--acid); border-radius:50%;
+    font-family:var(--f-crest); color:var(--acid); font-size:17px; line-height:1;
+    box-shadow:0 0 14px rgba(45,255,127,.5), inset 0 0 8px rgba(45,255,127,.25);
+  }
+  .nav__links{ display:none; gap:26px; font-size:13px; letter-spacing:.14em; color:var(--bone-dim); }
+  .nav__links a{ text-decoration:none; }
+  .nav__links a:hover{ color:var(--acid); }
+  .btn{
+    font-family:var(--f-body); font-weight:700; letter-spacing:.04em;
+    text-decoration:none; cursor:pointer; border:none;
+    display:inline-flex; align-items:center; gap:8px;
+    border-radius:999px; transition:transform .15s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn--primary{
+    background:var(--acid); color:#04120a; padding:11px 20px; font-size:14px;
+    box-shadow:0 0 0 rgba(45,255,127,0);
+  }
+  .btn--primary:hover{ transform:translateY(-2px); box-shadow:0 8px 30px rgba(45,255,127,.45); }
+  .btn--ghost{
+    background:transparent; color:var(--bone); padding:11px 20px; font-size:14px;
+    border:1.5px solid rgba(242,233,210,.35);
+  }
+  .btn--ghost:hover{ border-color:var(--acid); color:var(--acid); }
+  .nav .btn--primary{ padding:9px 16px; font-size:13px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding: calc(96px + var(--safe-t)) var(--gutter) 90px;
+    overflow:hidden;
+  }
+  /* rotating light beams */
+  .beams{ position:absolute; inset:-30% -10%; z-index:0; pointer-events:none; opacity:.75; }
+  .beam{
+    position:absolute; left:50%; top:-10%; transform-origin:top center;
+    width:34vmax; height:150vmax;
+    background:linear-gradient(to bottom, rgba(45,255,127,.22), transparent 55%);
+    filter:blur(26px);
+    clip-path:polygon(48% 0, 52% 0, 70% 100%, 30% 100%);
+    opacity:0;
+  }
+  .beam.b1{ transform:rotate(-26deg); }
+  .beam.b2{ transform:rotate(-8deg);  background:linear-gradient(to bottom, rgba(90,43,255,.22), transparent 55%); }
+  .beam.b3{ transform:rotate(12deg); }
+  .beam.b4{ transform:rotate(28deg);  background:linear-gradient(to bottom, rgba(255,122,43,.18), transparent 52%); }
+
+  #emberCanvas{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+
+  .hero__inner{ position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; width:100%; }
+
+  .stamp{
+    font-family:var(--f-body); font-weight:700; font-size:11px; letter-spacing:.34em;
+    color:var(--acid); border:1px solid rgba(45,255,127,.4); border-radius:999px;
+    padding:7px 16px; margin-bottom:28px;
+    background:rgba(45,255,127,.05);
+    opacity:0; transform:translateY(8px);
+  }
+
+  .seal{ width:min(44vw,210px); height:min(44vw,210px); margin-bottom:6px; opacity:0; transform:scale(.8); filter:drop-shadow(0 0 0 rgba(45,255,127,0)); }
+  .seal text{ font-family:var(--f-crest); fill:var(--bone); }
+  .seal .ring-text{ font-size:11px; letter-spacing:4px; fill:var(--acid); }
+  .seal .gamma{ font-size:92px; fill:var(--bone); }
+  .seal .sub{ font-size:14px; letter-spacing:6px; fill:var(--acid); }
+
+  .wordmark{
+    font-family:var(--f-crest);
+    font-size:clamp(44px, 13vw, 132px);
+    line-height:.92; letter-spacing:.01em; color:var(--bone);
+    margin:8px 0 6px; text-transform:none;
+    text-shadow:0 0 1px var(--bone);
+  }
+  .wordmark .ch{ display:inline-block; opacity:0; transform:translateY(14px); }
+  .wordmark em{
+    font-style:normal; color:var(--acid);
+    text-shadow:0 0 18px rgba(45,255,127,.75), 0 0 46px rgba(45,255,127,.35);
+  }
+
+  .tagline{
+    font-family:var(--f-display);
+    font-size:clamp(20px, 5.4vw, 40px);
+    letter-spacing:.015em; line-height:1;
+    color:var(--bone); margin-top:10px;
+    opacity:0; transform:translateY(10px);
+  }
+  .tagline b{ color:var(--acid); font-weight:400; }
+
+  .hero__meta{
+    margin-top:20px; max-width:34ch;
+    font-size:14px; color:var(--bone-dim); line-height:1.6;
+    opacity:0; transform:translateY(10px);
+  }
+  .hero__meta strong{ color:var(--bone); font-weight:500; }
+
+  .hero__cta{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:30px; opacity:0; transform:translateY(10px); }
+
+  .coming{
+    margin-top:34px; font-family:var(--f-display); font-size:13px; letter-spacing:.5em;
+    color:var(--amber); opacity:0;
+    text-shadow:0 0 16px rgba(255,122,43,.55);
+  }
+  .coming .dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--amber); margin-right:12px; vertical-align:middle; box-shadow:0 0 10px var(--amber); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:.4; transform:scale(.85)} 50%{opacity:1; transform:scale(1.15)} }
+
+  .scrollcue{
+    position:absolute; bottom: calc(18px + var(--safe-b)); left:50%; transform:translateX(-50%);
+    z-index:3; font-size:11px; letter-spacing:.3em; color:var(--bone-dim);
+    display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0;
+  }
+  .scrollcue .line{ width:1px; height:34px; background:linear-gradient(var(--acid),transparent); animation:drop 1.8s ease-in-out infinite; }
+  @keyframes drop{ 0%{transform:scaleY(0); transform-origin:top} 50%{transform:scaleY(1); transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0); transform-origin:bottom} }
+
+  /* ---------- hero load sequence (JS adds .lit) ---------- */
+  .hero.lit .beam{ animation:beamIn 1.2s cubic-bezier(.2,.7,.2,1) forwards; }
+  .hero.lit .beam.b1{ animation-delay:.05s } .hero.lit .beam.b2{ animation-delay:.18s }
+  .hero.lit .beam.b3{ animation-delay:.11s } .hero.lit .beam.b4{ animation-delay:.24s }
+  @keyframes beamIn{ to{ opacity:.75; } }
+
+  .hero.lit .stamp{ animation:rise .6s .15s ease forwards; }
+  .hero.lit .seal{ animation:sealIn 1s .3s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes sealIn{ to{ opacity:1; transform:scale(1); filter:drop-shadow(0 0 30px rgba(45,255,127,.35)); } }
+  .hero.lit .wordmark .ch{ animation:rise .5s ease forwards; }
+  .hero.lit .tagline{ animation:flick .7s 1.05s ease forwards; }
+  .hero.lit .hero__meta{ animation:rise .6s 1.25s ease forwards; }
+  .hero.lit .hero__cta{ animation:rise .6s 1.4s ease forwards; }
+  .hero.lit .coming{ animation:flick .8s 1.55s ease forwards; }
+  .hero.lit .scrollcue{ animation:rise .6s 1.9s ease forwards; }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+  @keyframes flick{
+    0%{opacity:0} 10%{opacity:1} 14%{opacity:.3} 20%{opacity:1}
+    40%{opacity:.6} 48%{opacity:1} 100%{opacity:1; transform:translateY(0)}
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker{
+    position:relative; z-index:2; border-block:1px solid rgba(45,255,127,.22);
+    background:var(--ink-2); overflow:hidden; padding:16px 0;
+  }
+  .ticker__track{ display:flex; width:max-content; gap:0; animation:marquee 32s linear infinite; }
+  .ticker:hover .ticker__track{ animation-play-state:paused; }
+  .ticker__track span{
+    font-family:var(--f-display); font-size:clamp(20px,4vw,30px); letter-spacing:.03em;
+    color:var(--bone); padding:0 .6em; white-space:nowrap;
+  }
+  .ticker__track .x{ color:var(--acid); }
+  @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---------- SECTION base ---------- */
+  .section{ position:relative; z-index:2; padding: clamp(80px,13vw,150px) 0; }
+  .kicker{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--f-crest); font-size:13px; letter-spacing:.14em; color:var(--acid);
+    margin-bottom:22px;
+  }
+  .kicker::before{ content:"Γ"; font-size:16px; }
+
+  /* ---------- MANIFESTO ---------- */
+  .manifesto{ background:linear-gradient(180deg, transparent, rgba(11,29,19,.5) 50%, transparent); }
+  .manifesto h2{
+    font-family:var(--f-display);
+    font-size:clamp(40px, 11vw, 112px); line-height:.94; letter-spacing:.005em;
+    color:var(--bone); max-width:16ch;
+  }
+  .manifesto h2 b{ color:var(--acid); font-weight:400; text-shadow:0 0 26px rgba(45,255,127,.45); }
+  .manifesto p{
+    margin-top:30px; max-width:52ch; font-size:clamp(16px,2.4vw,20px);
+    color:var(--bone-dim); line-height:1.7;
+  }
+  .manifesto p strong{ color:var(--bone); font-weight:500; }
+
+  /* ---------- PÉNSUM (course ledger) ---------- */
+  .pensum__head{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:34px; }
+  .pensum__title{ font-family:var(--f-crest); font-size:clamp(30px,7vw,58px); color:var(--bone); line-height:1; }
+  .pensum__note{ font-size:13px; color:var(--bone-dim); max-width:30ch; }
+
+  .ledger{ border-top:1px solid rgba(242,233,210,.18); }
+  .course{
+    display:grid; grid-template-columns:auto 1fr auto; gap:14px 20px; align-items:baseline;
+    padding:24px 4px; border-bottom:1px solid rgba(242,233,210,.14);
+    position:relative; opacity:0; transform:translateY(12px);
+    transition:opacity .5s ease, transform .5s ease, background .3s ease;
+  }
+  .course.in{ opacity:1; transform:none; }
+  .course:hover{ background:rgba(45,255,127,.035); }
+  .course__code{ font-family:var(--f-body); font-weight:700; font-size:13px; letter-spacing:.08em; color:var(--acid); }
+  .course__name{ font-family:var(--f-crest); font-size:clamp(19px,3.4vw,27px); color:var(--bone); line-height:1.1; }
+  .course__desc{ grid-column:2; font-size:14.5px; color:var(--bone-dim); line-height:1.55; margin-top:7px; max-width:62ch; }
+  .course__credit{ font-family:var(--f-display); font-size:13px; letter-spacing:.14em; color:var(--amber); white-space:nowrap; align-self:center; }
+
+  /* ---------- SEDES (chapter network) ---------- */
+  .sedes__grid{ display:grid; gap:16px; margin-top:34px; }
+  .sede{
+    --c:var(--bone);
+    position:relative; overflow:hidden; background:var(--ink-2);
+    border:1px solid rgba(242,233,210,.16); border-radius:16px;
+    padding:30px 24px 26px;
+    transition:transform .2s ease, border-color .25s ease, box-shadow .3s ease;
+  }
+  .sede::before{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.55;
+    background:radial-gradient(circle at 50% -10%, color-mix(in srgb, var(--c) 26%, transparent), transparent 62%);
+  }
+  .sede > *{ position:relative; }
+  .sede:hover{ transform:translateY(-4px); border-color:var(--c); box-shadow:0 16px 44px color-mix(in srgb, var(--c) 30%, transparent); }
+  .sede--here{ border-color:var(--c); box-shadow:0 0 0 1px var(--c), 0 16px 48px color-mix(in srgb, var(--c) 28%, transparent); }
+  .sede__badge{
+    position:absolute; top:16px; right:16px; z-index:2;
+    font-family:var(--f-body); font-weight:700; font-size:10px; letter-spacing:.18em;
+    color:#04120a; background:var(--c); padding:5px 10px; border-radius:999px;
+  }
+  .sede__letter{ font-family:var(--f-crest); font-size:62px; line-height:1; color:var(--c); text-shadow:0 0 26px color-mix(in srgb, var(--c) 55%, transparent); }
+  .sede__name{ font-family:var(--f-crest); font-size:20px; letter-spacing:.06em; margin-top:12px; color:var(--bone); }
+  .sede__hood{ font-size:14px; color:var(--bone-dim); margin-top:6px; letter-spacing:.04em; }
+  .sede__color{ display:inline-flex; align-items:center; gap:9px; margin-top:18px; font-family:var(--f-body); font-size:12px; letter-spacing:.16em; color:var(--bone-dim); }
+  .sede__swatch{ width:12px; height:12px; border-radius:50%; background:var(--c); box-shadow:0 0 10px var(--c); }
+
+  /* ---------- CAMPUS / location ---------- */
+  .campus{ background:var(--ink-2); border-block:1px solid rgba(45,255,127,.14); }
+  .campus__grid{ display:grid; gap:40px; }
+  .campus h2{ font-family:var(--f-display); font-size:clamp(34px,8vw,76px); line-height:.96; color:var(--bone); }
+  .campus h2 b{ color:var(--acid); font-weight:400; }
+  .campus p{ margin-top:22px; font-size:clamp(15px,2.2vw,18px); color:var(--bone-dim); line-height:1.7; max-width:46ch; }
+
+  .addr{
+    margin-top:30px; display:inline-flex; flex-direction:column; gap:4px;
+    border-left:2px solid var(--acid); padding:4px 0 4px 18px;
+  }
+  .addr .l1{ font-family:var(--f-crest); font-size:clamp(20px,4vw,30px); color:var(--bone); }
+  .addr .l2{ font-size:14px; color:var(--bone-dim); letter-spacing:.04em; }
+  .campus__actions{ margin-top:28px; display:flex; flex-wrap:wrap; gap:12px; }
+
+  .mapcard{
+    position:relative; border:1px solid rgba(45,255,127,.25); border-radius:14px; overflow:hidden;
+    min-height:280px; background:
+      radial-gradient(circle at 60% 40%, rgba(45,255,127,.12), transparent 55%),
+      repeating-linear-gradient(0deg, rgba(242,233,210,.05) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, rgba(242,233,210,.05) 0 1px, transparent 1px 40px),
+      var(--ink-3);
+    display:grid; place-items:center;
+  }
+  .mapcard .pin{ position:relative; text-align:center; }
+  .mapcard .pin__dot{
+    width:20px; height:20px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+    background:var(--acid); margin:0 auto 14px; box-shadow:0 0 0 6px rgba(45,255,127,.18), 0 0 26px rgba(45,255,127,.6);
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{transform:rotate(-45deg) translateY(0)} 50%{transform:rotate(-45deg) translateY(-7px)} }
+  .mapcard .pin__label{ font-family:var(--f-crest); color:var(--bone); font-size:15px; letter-spacing:.1em; }
+  .mapcard .pin__sub{ font-size:12px; color:var(--bone-dim); margin-top:4px; letter-spacing:.1em; }
+
+  /* ---------- MATRÍCULA / CTA ---------- */
+  .enroll{ text-align:center; }
+  .enroll h2{
+    font-family:var(--f-display); font-size:clamp(44px,13vw,128px); line-height:.9; color:var(--bone);
+  }
+  .enroll h2 b{ color:var(--acid); font-weight:400; text-shadow:0 0 30px rgba(45,255,127,.5); }
+  .enroll p{ margin:22px auto 0; max-width:40ch; color:var(--bone-dim); font-size:clamp(15px,2.4vw,19px); line-height:1.7; }
+  .enroll__cta{ margin-top:36px; display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .btn--lg{ padding:16px 30px; font-size:16px; }
+  .btn--ig{ background:var(--bone); color:#06130b; }
+  .btn--ig:hover{ transform:translateY(-2px); box-shadow:0 10px 34px rgba(242,233,210,.3); }
+
+  /* ---------- FOOTER ---------- */
+  .foot{
+    position:relative; z-index:2; border-top:1px solid rgba(242,233,210,.12);
+    padding:40px var(--gutter) calc(40px + var(--safe-b));
+    display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between;
+    font-size:12.5px; color:var(--bone-dim); letter-spacing:.04em;
+  }
+  .foot a{ color:var(--bone-dim); text-decoration:none; }
+  .foot a:hover{ color:var(--acid); }
+  .foot__brand{ font-family:var(--f-crest); color:var(--bone); letter-spacing:.08em; }
+
+  /* ---------- responsive up ---------- */
+  @media (min-width:740px){
+    .nav__links{ display:flex; }
+    .campus__grid{ grid-template-columns:1.05fr .95fr; align-items:center; }
+    .mapcard{ min-height:360px; }
+    .course{ grid-template-columns:120px 1fr auto; }
+    .course__desc{ grid-column:2; }
+    .sedes__grid{ grid-template-columns:repeat(3,1fr); }
+  }
+
+  /* ---------- CHANNELS ---------- */
+  .channels{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:30px; }
+  .chan{
+    display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+    font-size:13px; letter-spacing:.03em; color:var(--bone);
+    border:1px solid rgba(242,233,210,.22); border-radius:999px; padding:9px 16px;
+    transition:border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .chan:hover{ border-color:var(--acid); color:var(--acid); background:rgba(45,255,127,.05); }
+  .chan svg{ width:15px; height:15px; flex:none; }
+  .chan[hidden]{ display:none; }
+
+  /* ---------- NEWSLETTER ---------- */
+  .news{ max-width:460px; margin:36px auto 0; }
+  .news__row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .news input{
+    flex:1 1 200px; min-width:0; background:var(--ink-2); color:var(--bone);
+    border:1px solid rgba(242,233,210,.22); border-radius:999px; padding:14px 18px;
+    font-family:var(--f-body); font-size:15px;
+  }
+  .news input:focus{ outline:none; border-color:var(--acid); box-shadow:0 0 0 3px rgba(45,255,127,.15); }
+  .news input::placeholder{ color:var(--bone-dim); }
+  .news__msg{ min-height:20px; margin-top:12px; font-size:13px; color:var(--acid); }
+  .news__msg.err{ color:var(--amber); }
+
+  /* ---------- AGENDA ---------- */
+  .agenda .pensum__head{ margin-bottom:26px; }
+  .ev{
+    display:grid; grid-template-columns:auto 1fr auto; gap:6px 22px; align-items:center;
+    padding:22px 4px; border-bottom:1px solid rgba(242,233,210,.14);
+  }
+  .ev:first-child{ border-top:1px solid rgba(242,233,210,.18); }
+  .ev__date{
+    font-family:var(--f-display); font-size:13px; letter-spacing:.1em; color:var(--acid);
+    border:1px solid rgba(45,255,127,.3); border-radius:8px; padding:9px 12px; text-align:center;
+    white-space:nowrap; min-width:88px; align-self:start;
+  }
+  .ev__title{ font-family:var(--f-crest); font-size:clamp(18px,3.4vw,26px); color:var(--bone); line-height:1.1; }
+  .ev__desc{ grid-column:2; font-size:14px; color:var(--bone-dim); line-height:1.55; margin-top:4px; max-width:60ch; }
+  .ev__cta{ font-size:13px; align-self:center; }
+  .ev--soldout .ev__cta{ opacity:.45; pointer-events:none; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery__grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:30px; }
+  .gal{ position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:12px; background:var(--ink-3); border:1px solid rgba(242,233,210,.1); }
+  .gal img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+  .gal:hover img{ transform:scale(1.06); }
+  .gal--ph{ display:grid; place-items:center; background:radial-gradient(circle at 50% 38%, rgba(45,255,127,.1), transparent 60%), var(--ink-3); }
+  .gal--ph span{ font-family:var(--f-crest); color:var(--bone-dim); font-size:12px; letter-spacing:.14em; }
+
+  /* ---------- WHATSAPP FAB ---------- */
+  .wa-fab{
+    position:fixed; right:18px; bottom:calc(18px + var(--safe-b)); z-index:55;
+    width:56px; height:56px; border-radius:50%; display:none; place-items:center;
+    background:#25d366; color:#04120a; box-shadow:0 10px 30px rgba(0,0,0,.45);
+    transition:transform .2s ease;
+  }
+  .wa-fab[data-on="1"]{ display:grid; }
+  .wa-fab:hover{ transform:scale(1.08); }
+  .wa-fab svg{ width:30px; height:30px; }
+
+  @media (min-width:740px){
+    .gallery__grid{ grid-template-columns:repeat(4,1fr); }
+    .ev{ grid-template-columns:116px 1fr auto; }
+  }
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; scroll-behavior:auto; }
+    .stamp,.seal,.wordmark .ch,.tagline,.hero__meta,.hero__cta,.coming,.scrollcue,.course{ opacity:1 !important; transform:none !important; }
+    .beam{ opacity:.5 !important; }
+    .grain,.scan{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="atmos" aria-hidden="true">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+</div>
+<div class="scan" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Campus Gamma, inicio">
+    <span class="nav__gamma" aria-hidden="true">Γ</span>
+    CAMPUS GAMMA
+  </a>
+  <div class="nav__links">
+    <a href="#pensum">El pénsum</a>
+    <a href="#sedes">Las sedes</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#campus">El campus</a>
+    <a href="#matricula">Matrícula</a>
+  </div>
+  <a class="btn btn--primary" data-ch="instagram" href="https://instagram.com/campusgamma.bogota" target="_blank" rel="noopener">Inscríbete</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="beams" aria-hidden="true">
+      <span class="beam b1"></span><span class="beam b2"></span>
+      <span class="beam b3"></span><span class="beam b4"></span>
+    </div>
+    <canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero__inner">
+      <span class="stamp" data-field="hero.stamp">SEDE CENTRO · CLASE 2026</span>
+
+      <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Sello de Campus Gamma">
+        <defs>
+          <path id="ring" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#2dff7f" stroke-opacity=".35" stroke-width="1"/>
+        <circle cx="100" cy="100" r="82" fill="none" stroke="#2dff7f" stroke-opacity=".9" stroke-width="2"/>
+        <text class="ring-text">
+          <textPath href="#ring" startOffset="0">✦ CAMPUS GAMMA ✦ NOS TOMAMOS EL CENTRO ✦</textPath>
+        </text>
+        <text class="gamma" x="100" y="118" text-anchor="middle">Γ</text>
+        <text class="sub" x="100" y="152" text-anchor="middle">BOGOTÁ</text>
+      </svg>
+
+      <h1 class="wordmark" aria-label="Campus Gamma">
+        <span class="w1">CAMPUS</span> <span class="w2"><em>GAMMA</em></span>
+      </h1>
+
+      <p class="tagline">La universidad de los <b>tardeos</b>.</p>
+
+      <p class="hero__meta">
+        <strong>Av. Jiménez #5-40</strong> — en el corazón del centro de la capital.
+        Música, ambiente y la locura de ser joven en Bogotá.
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary" data-ch="instagram" href="https://instagram.com/campusgamma.bogota" target="_blank" rel="noopener">Inscríbete</a>
+        <a class="btn btn--ghost" href="#pensum">Ver el pénsum</a>
+      </div>
+
+      <p class="coming"><span class="dot" aria-hidden="true"></span><span data-field="brand.status">COMING SOON</span></p>
+    </div>
+
+    <div class="scrollcue" aria-hidden="true">
+      BAJA
+      <span class="line"></span>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track" id="ticker">
+      <span>BIENVENIDO AL CAMPUS <span class="x">✦</span> CLASE 2026 <span class="x">✦</span> TRES SEDES, UNA UNIVERSIDAD <span class="x">✦</span> NOS TOMAMOS EL CENTRO <span class="x">✦</span> MÚSICA, AMBIENTE Y FIESTA <span class="x">✦</span> LA LOCURA DE LA JUVENTUD <span class="x">✦</span> </span>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="section manifesto">
+    <div class="container">
+      <span class="kicker">El manifiesto</span>
+      <h2>No es una fiesta. Es una <b>etapa.</b></h2>
+      <p>
+        Campus no te vende una noche: te vende los mejores años de tu vida. La universidad,
+        los amigos que te vas a inventar aquí, el tardeo que se vuelve madrugada.
+        <strong>Entras una vez y nunca te gradúas.</strong>
+        Esto es una fraternidad en pleno centro de Bogotá — la etapa, no el after.
+      </p>
+    </div>
+  </section>
+
+  <!-- PÉNSUM -->
+  <section class="section" id="pensum">
+    <div class="container">
+      <span class="kicker">El pénsum</span>
+      <div class="pensum__head">
+        <div class="pensum__title">Facultades &amp; materias</div>
+        <div class="pensum__note">Carga académica obligatoria. Matrícula abierta a todos los que quieran repetir la etapa.</div>
+      </div>
+
+      <div class="ledger">
+        <article class="course">
+          <div class="course__code">GMM-101</div>
+          <h3 class="course__name">Cátedra de Tardeo</h3>
+          <div class="course__credit">3 créditos</div>
+          <p class="course__desc">Teoría y práctica desde que baja el sol. Prerrequisito: ninguno, solo ganas de salir temprano.</p>
+        </article>
+
+        <article class="course">
+          <div class="course__code">GMM-202</div>
+          <h3 class="course__name">Facultad de Perreo</h3>
+          <div class="course__credit">Laboratorio</div>
+          <p class="course__desc">Práctica obligatoria. No está permitido quedarse quieto en el salón.</p>
+        </article>
+
+        <article class="course">
+          <div class="course__code">GMM-303</div>
+          <h3 class="course__name">Taller de Amistades Nuevas</h3>
+          <div class="course__credit">4 créditos</div>
+          <p class="course__desc">Llegas solo, sales con una fraternidad. Trabajo en grupo desde el primer día.</p>
+        </article>
+
+        <article class="course">
+          <div class="course__code">GMM-404</div>
+          <h3 class="course__name">Seminario de Resistencia</h3>
+          <div class="course__credit">Electiva</div>
+          <p class="course__desc">Nivel avanzado: aguantar de pie hasta que prendan las luces. Solo para los de último semestre.</p>
+        </article>
+
+        <article class="course">
+          <div class="course__code">GMM-505</div>
+          <h3 class="course__name">Historia del Centro</h3>
+          <div class="course__credit">2 créditos</div>
+          <p class="course__desc">Cada esquina de la Jiménez guarda una historia. Esta semana vas a sumar la tuya.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEDES -->
+  <section class="section sedes" id="sedes">
+    <div class="container">
+      <span class="kicker">La red</span>
+      <div class="pensum__head">
+        <div class="pensum__title">Tres sedes, una universidad</div>
+        <div class="pensum__note">Cada capítulo tiene su barrio y su color. Tú estás entrando por la del centro.</div>
+      </div>
+      <div class="sedes__grid">
+        <article class="sede" style="--c:#ff3b3b">
+          <div class="sede__letter">Α</div>
+          <div class="sede__name">CAMPUS ALFA</div>
+          <div class="sede__hood">Chapinero</div>
+          <div class="sede__color"><span class="sede__swatch"></span>ROJO</div>
+        </article>
+        <article class="sede" style="--c:#3b7bff">
+          <div class="sede__letter">Β</div>
+          <div class="sede__name">CAMPUS BETA</div>
+          <div class="sede__hood">Teusaquillo</div>
+          <div class="sede__color"><span class="sede__swatch"></span>AZUL</div>
+        </article>
+        <article class="sede sede--here" style="--c:#2dff7f">
+          <span class="sede__badge">ESTÁS AQUÍ</span>
+          <div class="sede__letter">Γ</div>
+          <div class="sede__name">CAMPUS GAMMA</div>
+          <div class="sede__hood">Centro</div>
+          <div class="sede__color"><span class="sede__swatch"></span>VERDE</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="section agenda" id="agenda">
+    <div class="container">
+      <span class="kicker">La agenda</span>
+      <div class="pensum__head">
+        <div class="pensum__title">Calendario académico</div>
+        <div class="pensum__note">Las fechas del semestre. Reserva tu cupo antes de que se llene el salón.</div>
+      </div>
+      <div class="ledger" id="agendaList"></div>
+    </div>
+  </section>
+
+  <!-- CAMPUS / LOCATION -->
+  <section class="section campus" id="campus">
+    <div class="container campus__grid">
+      <div>
+        <span class="kicker">El campus</span>
+        <h2>En el corazón de la <b>capital.</b></h2>
+        <p>
+          A pasos del Eje Ambiental, donde el edificio de El Tiempo guarda las historias del centro.
+          Aquí es donde empiezan las clases.
+        </p>
+        <div class="addr">
+          <span class="l1" data-field="location.l1">Av. Jiménez #5-40</span>
+          <span class="l2" data-field="location.l2">La Candelaria · Centro · Bogotá D.C.</span>
+        </div>
+        <div class="campus__actions">
+          <a class="btn btn--primary" data-ch="maps" href="https://www.google.com/maps/search/?api=1&query=Avenida+Jim%C3%A9nez+5-40+Bogot%C3%A1" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn--ghost" href="#agenda">Ver la agenda</a>
+        </div>
+      </div>
+      <div class="mapcard" aria-hidden="true">
+        <div class="pin">
+          <div class="pin__dot"></div>
+          <div class="pin__label">CAMPUS GAMMA</div>
+          <div class="pin__sub">AV. JIMÉNEZ #5-40</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="section gallery" id="galeria">
+    <div class="container">
+      <span class="kicker">El anuario</span>
+      <div class="pensum__head">
+        <div class="pensum__title">La vida en el campus</div>
+        <div class="pensum__note">Fotos, flyers y recuerdos de cada clase. Lo que pasa en Campus se queda en el anuario.</div>
+      </div>
+      <div class="gallery__grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- MATRÍCULA / CTA -->
+  <section class="section enroll" id="matricula">
+    <div class="container">
+      <span class="kicker" style="justify-content:center">La matrícula</span>
+      <h2>Matrículas <b>abiertas.</b></h2>
+      <p>Déjanos tu correo y eres el primero en enterarte del primer día de clases. El semestre está a punto de empezar en el centro.</p>
+
+      <form class="news" id="newsForm" novalidate>
+        <div class="news__row">
+          <input id="newsEmail" type="email" inputmode="email" autocomplete="email" placeholder="tu@correo.com" aria-label="Tu correo" required />
+          <button class="btn btn--primary btn--lg" type="submit">Inscríbeme</button>
+        </div>
+        <p class="news__msg" id="newsMsg" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="channels" id="channels"></div>
+
+      <p class="coming" style="opacity:1; margin-top:40px"><span class="dot" aria-hidden="true"></span><span data-field="brand.status">COMING SOON</span></p>
+    </div>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <span class="foot__brand">CAMPUS GAMMA · BOGOTÁ</span>
+  <span>Av. Jiménez #5-40 · Centro de la capital</span>
+  <span>Dirección creativa — BASHI · <a href="/admin">Panel</a></span>
+</footer>
+
+<a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.5 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10.1-10 10.1zm5.5-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* split the wordmark into animatable letters */
+  document.querySelectorAll(".wordmark .w1, .wordmark .w2 em").forEach(function(node){
+    var text = node.textContent, frag = document.createDocumentFragment(), i;
+    node.textContent = "";
+    for(i=0;i<text.length;i++){
+      var s = document.createElement("span");
+      s.className = "ch"; s.textContent = text[i];
+      s.style.animationDelay = (0.35 + i*0.05) + "s";
+      frag.appendChild(s);
+    }
+    node.appendChild(frag);
+  });
+
+  /* kick off the hero "lights-on" sequence */
+  var hero = document.getElementById("hero");
+  requestAnimationFrame(function(){ setTimeout(function(){ hero.classList.add("lit"); }, 120); });
+
+  /* nav solid on scroll */
+  var nav = document.getElementById("nav");
+  function onScroll(){ nav.classList.toggle("solid", window.scrollY > 40); }
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* seamless ticker: duplicate content once */
+  var track = document.getElementById("ticker");
+  if(track){ track.appendChild(track.firstElementChild.cloneNode(true)); }
+
+  /* reveal course rows as they enter */
+  var rows = document.querySelectorAll(".course");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          setTimeout(function(){ el.classList.add("in"); }, (+el.dataset.i||0)*90);
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:.25});
+    rows.forEach(function(r,i){ r.dataset.i = i; io.observe(r); });
+  } else {
+    rows.forEach(function(r){ r.classList.add("in"); });
+  }
+
+  /* ---- ember / particle field in the hero ---- */
+  if(!reduce){
+    var cv = document.getElementById("emberCanvas"), ctx = cv.getContext("2d");
+    var parts = [], W, H, DPR = Math.min(window.devicePixelRatio||1, 2), running = true;
+    var colors = ["45,255,127","125,255,176","255,122,43"];
+    function size(){
+      var r = hero.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cv.width = W*DPR; cv.height = H*DPR; cv.style.width = W+"px"; cv.style.height = H+"px";
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+    function seed(){
+      parts = [];
+      var n = Math.min(70, Math.round(W*H/22000));
+      for(var i=0;i<n;i++){
+        parts.push({
+          x:Math.random()*W, y:Math.random()*H,
+          r:Math.random()*2.1+.4,
+          vy:-(Math.random()*.4+.12), vx:(Math.random()-.5)*.25,
+          a:Math.random()*.5+.15, tw:Math.random()*Math.PI*2,
+          c:colors[(Math.random()*colors.length)|0]
+        });
+      }
+    }
+    function draw(){
+      if(!running) return;
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<parts.length;i++){
+        var p = parts[i];
+        p.y += p.vy; p.x += p.vx; p.tw += .04;
+        if(p.y < -10){ p.y = H+10; p.x = Math.random()*W; }
+        if(p.x < -10) p.x = W+10; if(p.x > W+10) p.x = -10;
+        var al = p.a * (0.6 + 0.4*Math.sin(p.tw));
+        ctx.beginPath();
+        ctx.fillStyle = "rgba("+p.c+","+al.toFixed(3)+")";
+        ctx.shadowBlur = 8; ctx.shadowColor = "rgba("+p.c+",.9)";
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      requestAnimationFrame(draw);
+    }
+    size(); seed(); draw();
+    window.addEventListener("resize", function(){ size(); seed(); }, {passive:true});
+    document.addEventListener("visibilitychange", function(){
+      running = !document.hidden; if(running) draw();
+    });
+    /* stop painting once hero scrolled away */
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(e){
+        running = e[0].isIntersecting; if(running) draw();
+      }, {threshold:0}).observe(hero);
+    }
+  }
+})();
+</script>
+
+<script>
+/* ============ CONTENIDO + LÓGICA ============ */
+(function(){
+  "use strict";
+
+  var DEFAULTS = {
+    brand:   { status:"COMING SOON" },
+    channels:{
+      instagram:"https://instagram.com/campusgamma.bogota",
+      whatsapp:"", tiktok:"", email:"", tickets:"",
+      maps:"https://www.google.com/maps/search/?api=1&query=Avenida+Jim%C3%A9nez+5-40+Bogot%C3%A1"
+    },
+    hero:    { stamp:"SEDE CENTRO · CLASE 2026" },
+    location:{ l1:"Av. Jiménez #5-40", l2:"La Candelaria · Centro · Bogotá D.C." },
+    sedes:[
+      { letter:"Α", name:"CAMPUS ALFA",  hood:"Chapinero",   colorName:"ROJO",  color:"#ff3b3b", here:false },
+      { letter:"Β", name:"CAMPUS BETA",  hood:"Teusaquillo", colorName:"AZUL",  color:"#3b7bff", here:false },
+      { letter:"Γ", name:"CAMPUS GAMMA", hood:"Centro",      colorName:"VERDE", color:"#2dff7f", here:true  }
+    ],
+    pensum:[
+      { code:"GMM-101", name:"Cátedra de Tardeo",        credit:"3 créditos", desc:"Teoría y práctica desde que baja el sol. Prerrequisito: ninguno, solo ganas de salir temprano." },
+      { code:"GMM-202", name:"Facultad de Perreo",       credit:"Laboratorio", desc:"Práctica obligatoria. No está permitido quedarse quieto en el salón." },
+      { code:"GMM-303", name:"Taller de Amistades Nuevas",credit:"4 créditos", desc:"Llegas solo, sales con una fraternidad. Trabajo en grupo desde el primer día." },
+      { code:"GMM-404", name:"Seminario de Resistencia",  credit:"Electiva",   desc:"Nivel avanzado: aguantar de pie hasta que prendan las luces. Solo para los de último semestre." },
+      { code:"GMM-505", name:"Historia del Centro",       credit:"2 créditos", desc:"Cada esquina de la Jiménez guarda una historia. Esta semana vas a sumar la tuya." }
+    ],
+    agenda:[
+      { date:"Próximamente", title:"Primer día de clases", desc:"La apertura de la sede del centro. Sé de los primeros en pisar el campus.", link:"", soldout:false }
+    ],
+    gallery:[]
+  };
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+  function get(o,path){ return path.split(".").reduce(function(a,k){ return (a&&a[k]!=null)?a[k]:null; }, o); }
+  function merge(base, extra){
+    var out = Array.isArray(base)?base.slice():Object.assign({},base);
+    if(!extra || typeof extra!=="object") return out;
+    Object.keys(extra).forEach(function(k){
+      var ev = extra[k];
+      if(ev==null) return;
+      if(Array.isArray(ev)) out[k] = ev;
+      else if(typeof ev==="object" && typeof out[k]==="object" && !Array.isArray(out[k])) out[k] = merge(out[k], ev);
+      else out[k] = ev;
+    });
+    return out;
+  }
+  function normWa(v){ if(!v) return ""; if(/^https?:/i.test(v)) return v; var d=String(v).replace(/\D/g,""); return d?("https://wa.me/"+d):""; }
+
+  var ICON = {
+    instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+    whatsapp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.3-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.1-.2.1-.4 0a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.3.1-.4l.3-.4c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.8-1.9c-.2-.4-.3-.4-.5-.4h-.5c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.7 2.6 4.1 3.5 1.5.6 2 .6 2.7.5.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.1-.4-.2z"/></svg>',
+    tiktok:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2 1.6 3.6 3.6 3.9v2.6c-1.3 0-2.6-.4-3.6-1.1v5.9a5.4 5.4 0 11-5.4-5.4c.3 0 .5 0 .8.1v2.7a2.7 2.7 0 102 2.6V3H16z"/></svg>',
+    tickets:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2 2 2 0 000 4 2 2 0 00-2 4H5a2 2 0 01-2-2 2 2 0 000-4 2 2 0 012-2z"/><path d="M15 6v12" stroke-dasharray="2 2"/></svg>',
+    maps:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    email:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>'
+  };
+
+  function render(c){
+    /* text fields */
+    document.querySelectorAll("[data-field]").forEach(function(el){
+      var v = get(c, el.getAttribute("data-field"));
+      if(v!=null && v!=="") el.textContent = v;
+    });
+
+    /* channel links */
+    document.querySelectorAll("[data-ch]").forEach(function(el){
+      var key = el.getAttribute("data-ch"), v = get(c, "channels."+key);
+      if(v) el.setAttribute("href", key==="whatsapp" ? normWa(v) : v);
+    });
+
+    /* channels row */
+    var ch = c.channels||{}, cont = document.getElementById("channels");
+    if(cont){
+      var defs = [
+        ["instagram","Instagram", function(v){return v;}],
+        ["whatsapp","WhatsApp",  normWa],
+        ["tiktok","TikTok",      function(v){return v;}],
+        ["tickets","Boletas",    function(v){return v;}],
+        ["maps","Cómo llegar",   function(v){return v;}],
+        ["email","Correo",       function(v){return "mailto:"+v;}]
+      ];
+      cont.innerHTML = defs.filter(function(d){ return ch[d[0]]; }).map(function(d){
+        var href = d[2](ch[d[0]]);
+        return '<a class="chan" href="'+esc(href)+'"'+(d[0]==="email"?"":' target="_blank" rel="noopener"')+'>'+(ICON[d[0]]||"")+esc(d[1])+'</a>';
+      }).join("");
+    }
+
+    /* whatsapp fab */
+    var fab = document.getElementById("waFab");
+    if(fab){ var w = normWa(ch.whatsapp); if(w){ fab.href = w; fab.setAttribute("data-on","1"); } else { fab.removeAttribute("data-on"); } }
+
+    /* sedes */
+    var sg = document.querySelector(".sedes__grid");
+    if(sg && Array.isArray(c.sedes)){
+      sg.innerHTML = c.sedes.map(function(s){
+        return '<article class="sede'+(s.here?' sede--here':'')+'" style="--c:'+esc(s.color||"#f2e9d2")+'">'+
+          (s.here?'<span class="sede__badge">ESTÁS AQUÍ</span>':'')+
+          '<div class="sede__letter">'+esc(s.letter)+'</div>'+
+          '<div class="sede__name">'+esc(s.name)+'</div>'+
+          '<div class="sede__hood">'+esc(s.hood)+'</div>'+
+          '<div class="sede__color"><span class="sede__swatch"></span>'+esc(s.colorName)+'</div>'+
+        '</article>';
+      }).join("");
+    }
+
+    /* pénsum */
+    var lg = document.querySelector("#pensum .ledger");
+    if(lg && Array.isArray(c.pensum)){
+      lg.innerHTML = c.pensum.map(function(x){
+        return '<article class="course in">'+
+          '<div class="course__code">'+esc(x.code)+'</div>'+
+          '<h3 class="course__name">'+esc(x.name)+'</h3>'+
+          '<div class="course__credit">'+esc(x.credit)+'</div>'+
+          '<p class="course__desc">'+esc(x.desc)+'</p>'+
+        '</article>';
+      }).join("");
+    }
+
+    /* agenda */
+    var al = document.getElementById("agendaList");
+    if(al){
+      var ag = Array.isArray(c.agenda)&&c.agenda.length ? c.agenda : DEFAULTS.agenda;
+      al.innerHTML = ag.map(function(e){
+        var cta = e.link
+          ? '<a class="btn btn--ghost ev__cta" href="'+esc(e.link)+'" target="_blank" rel="noopener">'+(e.soldout?"Agotado":"Reservar")+'</a>'
+          : '<span class="ev__cta" style="color:var(--bone-dim);font-size:13px">'+(e.soldout?"Agotado":"Pronto")+'</span>';
+        return '<article class="ev'+(e.soldout?' ev--soldout':'')+'">'+
+          '<div class="ev__date">'+esc(e.date)+'</div>'+
+          '<h3 class="ev__title">'+esc(e.title)+'</h3>'+
+          cta+
+          '<p class="ev__desc">'+esc(e.desc)+'</p>'+
+        '</article>';
+      }).join("");
+    }
+
+    /* galería */
+    var gg = document.getElementById("galleryGrid");
+    if(gg){
+      var g = Array.isArray(c.gallery)&&c.gallery.length ? c.gallery : null;
+      gg.innerHTML = g
+        ? g.map(function(im){ return '<figure class="gal"><img loading="lazy" src="'+esc(im.src)+'" alt="'+esc(im.alt||"Campus Gamma")+'"></figure>'; }).join("")
+        : Array.apply(null,{length:6}).map(function(){ return '<div class="gal gal--ph"><span>PRÓXIMAMENTE</span></div>'; }).join("");
+    }
+  }
+
+  /* newsletter — se ata una sola vez y lee el contenido vigente */
+  var CURRENT = DEFAULTS;
+  function wireNewsletter(){
+    var form = document.getElementById("newsForm"); if(!form) return;
+    var input = document.getElementById("newsEmail"), msg = document.getElementById("newsMsg");
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var email = (input.value||"").trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.className="news__msg err"; msg.textContent="Escribe un correo válido."; input.focus(); return; }
+      msg.className="news__msg"; msg.textContent="Enviando…";
+      fetch("/api/subscribe", {
+        method:"POST", headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({ email:email, source:"web" })
+      }).then(function(r){
+        if(!r.ok) throw new Error("no-backend");
+        msg.className="news__msg"; msg.textContent="¡Listo! Te avisamos del primer día de clases."; form.reset();
+      }).catch(function(){
+        var mail = get(CURRENT,"channels.email");
+        if(mail){
+          window.location.href = "mailto:"+mail+"?subject="+encodeURIComponent("Inscripción Campus Gamma")+"&body="+encodeURIComponent("Quiero enterarme del primer día de clases. Mi correo: "+email);
+          msg.className="news__msg"; msg.textContent="Te abrimos el correo para confirmar tu inscripción.";
+        } else {
+          msg.className="news__msg"; msg.textContent="Síguenos en Instagram para enterarte del primer día de clases.";
+        }
+      });
+    });
+  }
+
+  function loadContent(){
+    return fetch("/api/content",{cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .catch(function(){
+        return fetch("content.json",{cache:"no-store"})
+          .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+          .catch(function(){ return {}; });
+      });
+  }
+
+  render(DEFAULTS);
+  wireNewsletter();
+  loadContent().then(function(loaded){
+    CURRENT = merge(DEFAULTS, loaded||{});
+    render(CURRENT);
+  });
+})();
+</script>
+</body>
+</html>

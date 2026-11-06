@@ -1,0 +1,9 @@
+name = "campus-gamma"
+pages_build_output_dir = "."
+compatibility_date = "2024-11-01"
+
+# Reemplaza el id con el que te imprime:
+#   npx wrangler@latest kv namespace create CAMPUS_KV
+[[kv_namespaces]]
+binding = "CAMPUS_KV"
+id = "PEGA_AQUI_EL_ID_DE_TU_KV"

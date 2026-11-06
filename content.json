@@ -1,0 +1,29 @@
+{
+  "brand": { "status": "COMING SOON" },
+  "channels": {
+    "instagram": "https://instagram.com/campusgamma.bogota",
+    "whatsapp": "",
+    "tiktok": "",
+    "email": "",
+    "tickets": "",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Avenida+Jim%C3%A9nez+5-40+Bogot%C3%A1"
+  },
+  "hero": { "stamp": "SEDE CENTRO · CLASE 2026" },
+  "location": { "l1": "Av. Jiménez #5-40", "l2": "La Candelaria · Centro · Bogotá D.C." },
+  "sedes": [
+    { "letter": "Α", "name": "CAMPUS ALFA", "hood": "Chapinero", "colorName": "ROJO", "color": "#ff3b3b", "here": false },
+    { "letter": "Β", "name": "CAMPUS BETA", "hood": "Teusaquillo", "colorName": "AZUL", "color": "#3b7bff", "here": false },
+    { "letter": "Γ", "name": "CAMPUS GAMMA", "hood": "Centro", "colorName": "VERDE", "color": "#2dff7f", "here": true }
+  ],
+  "pensum": [
+    { "code": "GMM-101", "name": "Cátedra de Tardeo", "credit": "3 créditos", "desc": "Teoría y práctica desde que baja el sol. Prerrequisito: ninguno, solo ganas de salir temprano." },
+    { "code": "GMM-202", "name": "Facultad de Perreo", "credit": "Laboratorio", "desc": "Práctica obligatoria. No está permitido quedarse quieto en el salón." },
+    { "code": "GMM-303", "name": "Taller de Amistades Nuevas", "credit": "4 créditos", "desc": "Llegas solo, sales con una fraternidad. Trabajo en grupo desde el primer día." },
+    { "code": "GMM-404", "name": "Seminario de Resistencia", "credit": "Electiva", "desc": "Nivel avanzado: aguantar de pie hasta que prendan las luces. Solo para los de último semestre." },
+    { "code": "GMM-505", "name": "Historia del Centro", "credit": "2 créditos", "desc": "Cada esquina de la Jiménez guarda una historia. Esta semana vas a sumar la tuya." }
+  ],
+  "agenda": [
+    { "date": "Próximamente", "title": "Primer día de clases", "desc": "La apertura de la sede del centro. Sé de los primeros en pisar el campus.", "link": "", "soldout": false }
+  ],
+  "gallery": []
+}

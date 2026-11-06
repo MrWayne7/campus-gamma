@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Campus Gamma — Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Graduate&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:dark;
+    --ink:#07120c; --ink-2:#0b1d13; --ink-3:#10271a;
+    --bone:#f2e9d2; --dim:#b9b199; --acid:#2dff7f; --amber:#ff7a2b;
+    --line:rgba(242,233,210,.16);
+    --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+    --f-crest:"Graduate",serif; --f-body:"Space Grotesk",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--ink);color:var(--bone);line-height:1.5;
+    padding:calc(16px + var(--safe-t)) 0 calc(96px + var(--safe-b));-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+  a{color:var(--acid)}
+  h1{font-family:var(--f-crest);font-size:22px;letter-spacing:.04em}
+  .gamma{display:inline-grid;place-items:center;width:34px;height:34px;border:1.5px solid var(--acid);border-radius:50%;
+    color:var(--acid);font-family:var(--f-crest);box-shadow:0 0 14px rgba(45,255,127,.4)}
+  .top{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:6px}
+  .top__l{display:flex;align-items:center;gap:12px}
+  .badge{font-size:11px;letter-spacing:.14em;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--dim)}
+  .badge--srv{color:var(--acid);border-color:rgba(45,255,127,.4)}
+  .badge--loc{color:var(--amber);border-color:rgba(255,122,43,.4)}
+  .muted{color:var(--dim);font-size:13.5px}
+
+  .card{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:16px}
+  .card h2{font-family:var(--f-crest);font-size:15px;letter-spacing:.1em;color:var(--acid);margin-bottom:4px}
+  .card .hint{font-size:12.5px;color:var(--dim);margin-bottom:16px}
+
+  label{display:block;font-size:12px;letter-spacing:.06em;color:var(--dim);margin:14px 0 6px}
+  input[type=text],input[type=email],input[type=password],textarea,input[type=url]{
+    width:100%;background:var(--ink);color:var(--bone);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;font-family:var(--f-body);font-size:15px}
+  input:focus,textarea:focus{outline:none;border-color:var(--acid);box-shadow:0 0 0 3px rgba(45,255,127,.14)}
+  textarea{min-height:72px;resize:vertical}
+  .grid2{display:grid;gap:14px}
+  @media(min-width:620px){.grid2{grid-template-columns:1fr 1fr}}
+  .row{position:relative;border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:12px;background:var(--ink)}
+  .row__x{position:absolute;top:10px;right:10px;background:transparent;border:1px solid var(--line);color:var(--dim);
+    border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:16px}
+  .row__x:hover{color:var(--amber);border-color:var(--amber)}
+  .inline{display:flex;align-items:center;gap:10px;margin-top:12px}
+  .inline input[type=color]{width:46px;height:40px;border:1px solid var(--line);border-radius:10px;background:var(--ink);padding:3px}
+  .chk{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px;color:var(--bone)}
+
+  .btn{font-family:var(--f-body);font-weight:700;letter-spacing:.03em;border:none;cursor:pointer;border-radius:999px;
+    display:inline-flex;align-items:center;gap:8px;padding:12px 20px;font-size:14px;text-decoration:none}
+  .btn--primary{background:var(--acid);color:#04120a}
+  .btn--ghost{background:transparent;color:var(--bone);border:1.5px solid var(--line)}
+  .btn--ghost:hover{border-color:var(--acid);color:var(--acid)}
+  .btn--sm{padding:9px 14px;font-size:13px}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(7,18,12,.94);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);padding:12px clamp(16px,4vw,28px) calc(12px + var(--safe-b))}
+  .bar__in{max-width:860px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .bar__msg{font-size:13px;color:var(--acid);margin-left:auto}
+  .bar__msg.err{color:var(--amber)}
+
+  /* login */
+  .login{max-width:380px;margin:12vh auto 0;text-align:center}
+  .login .gamma{width:56px;height:56px;font-size:26px;margin:0 auto 18px}
+  .login h1{margin-bottom:6px}
+  .login form{margin-top:20px;text-align:left}
+  .hidden{display:none!important}
+
+  .subs{font-size:14px}
+  .subs__item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .subs__item small{color:var(--dim)}
+  table{width:100%;font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login wrap" id="loginView">
+  <div class="gamma">Γ</div>
+  <h1>Campus Gamma · Panel</h1>
+  <p class="muted">Ingresa la contraseña del administrador.</p>
+  <form id="loginForm">
+    <label for="pw">Contraseña</label>
+    <input type="password" id="pw" autocomplete="current-password" />
+    <p class="bar__msg err" id="loginMsg" style="margin:12px 0 0"></p>
+    <button class="btn btn--primary" type="submit" style="margin-top:16px;width:100%;justify-content:center">Entrar</button>
+  </form>
+</div>
+
+<!-- APP -->
+<div id="appView" class="hidden">
+  <div class="wrap">
+    <div class="top">
+      <div class="top__l">
+        <div class="gamma">Γ</div>
+        <div>
+          <h1>Panel de contenido</h1>
+          <div class="muted">Campus Gamma · sede Centro</div>
+        </div>
+      </div>
+      <span class="badge" id="modeBadge">…</span>
+    </div>
+    <p class="muted" id="modeNote"></p>
+
+    <div class="card">
+      <h2>General</h2>
+      <div class="hint">El estado grande ("COMING SOON") y el sello del hero.</div>
+      <div class="grid2">
+        <div><label>Estado / aviso</label><input type="text" id="f_status" /></div>
+        <div><label>Sello del hero</label><input type="text" id="f_stamp" /></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Ubicación</h2>
+      <div class="grid2">
+        <div><label>Dirección</label><input type="text" id="f_l1" /></div>
+        <div><label>Zona / ciudad</label><input type="text" id="f_l2" /></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Canales</h2>
+      <div class="hint">Deja vacío lo que no uses: solo aparecen los que tengan valor. WhatsApp acepta número o enlace wa.me.</div>
+      <div class="grid2">
+        <div><label>Instagram (URL)</label><input type="url" id="c_instagram" placeholder="https://instagram.com/…" /></div>
+        <div><label>WhatsApp (número o URL)</label><input type="text" id="c_whatsapp" placeholder="57300…" /></div>
+        <div><label>TikTok (URL)</label><input type="url" id="c_tiktok" /></div>
+        <div><label>Boletas / tickets (URL)</label><input type="url" id="c_tickets" /></div>
+        <div><label>Google Maps (URL)</label><input type="url" id="c_maps" /></div>
+        <div><label>Correo</label><input type="email" id="c_email" placeholder="hola@…" /></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Sedes</h2>
+      <div class="hint">Las tres sedes de la red. "Aquí" marca la sede de esta página.</div>
+      <div id="sedesBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>Pénsum</h2>
+      <div class="hint">Las materias / facultades.</div>
+      <div id="pensumBox"></div>
+      <button class="btn btn--ghost btn--sm" type="button" id="addPensum" style="margin-top:12px">+ Materia</button>
+    </div>
+
+    <div class="card">
+      <h2>Agenda</h2>
+      <div class="hint">Próximos eventos. Deja el enlace vacío si aún no hay boletería.</div>
+      <div id="agendaBox"></div>
+      <button class="btn btn--ghost btn--sm" type="button" id="addAgenda" style="margin-top:12px">+ Evento</button>
+    </div>
+
+    <div class="card">
+      <h2>Galería</h2>
+      <div class="hint">Pega URLs de imágenes (fotos, flyers). Si está vacía, el sitio muestra "Próximamente".</div>
+      <div id="galleryBox"></div>
+      <button class="btn btn--ghost btn--sm" type="button" id="addGallery" style="margin-top:12px">+ Imagen</button>
+    </div>
+
+    <div class="card" id="subsCard">
+      <h2>Inscritos</h2>
+      <div class="hint">Correos capturados desde la matrícula (solo con backend).</div>
+      <div id="subsBox" class="subs"><p class="muted">—</p></div>
+      <button class="btn btn--ghost btn--sm" type="button" id="subsCsv" style="margin-top:12px">Exportar CSV</button>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="bar__in">
+      <button class="btn btn--primary" type="button" id="saveBtn">Guardar</button>
+      <button class="btn btn--ghost btn--sm" type="button" id="exportBtn">Exportar JSON</button>
+      <button class="btn btn--ghost btn--sm" type="button" id="importBtn">Importar JSON</button>
+      <button class="btn btn--ghost btn--sm hidden" type="button" id="logoutBtn">Salir</button>
+      <input type="file" id="importFile" accept="application/json" class="hidden" />
+      <span class="bar__msg" id="barMsg"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DEFAULTS = {
+    brand:{status:"COMING SOON"},
+    channels:{instagram:"https://instagram.com/campusgamma.bogota",whatsapp:"",tiktok:"",email:"",tickets:"",
+      maps:"https://www.google.com/maps/search/?api=1&query=Avenida+Jim%C3%A9nez+5-40+Bogot%C3%A1"},
+    hero:{stamp:"SEDE CENTRO · CLASE 2026"},
+    location:{l1:"Av. Jiménez #5-40",l2:"La Candelaria · Centro · Bogotá D.C."},
+    sedes:[
+      {letter:"Α",name:"CAMPUS ALFA",hood:"Chapinero",colorName:"ROJO",color:"#ff3b3b",here:false},
+      {letter:"Β",name:"CAMPUS BETA",hood:"Teusaquillo",colorName:"AZUL",color:"#3b7bff",here:false},
+      {letter:"Γ",name:"CAMPUS GAMMA",hood:"Centro",colorName:"VERDE",color:"#2dff7f",here:true}
+    ],
+    pensum:[
+      {code:"GMM-101",name:"Cátedra de Tardeo",credit:"3 créditos",desc:"Teoría y práctica desde que baja el sol."},
+      {code:"GMM-202",name:"Facultad de Perreo",credit:"Laboratorio",desc:"Práctica obligatoria. No está permitido quedarse quieto."},
+      {code:"GMM-303",name:"Taller de Amistades Nuevas",credit:"4 créditos",desc:"Llegas solo, sales con una fraternidad."},
+      {code:"GMM-404",name:"Seminario de Resistencia",credit:"Electiva",desc:"Aguantar de pie hasta que prendan las luces."},
+      {code:"GMM-505",name:"Historia del Centro",credit:"2 créditos",desc:"Cada esquina de la Jiménez guarda una historia."}
+    ],
+    agenda:[{date:"Próximamente",title:"Primer día de clases",desc:"La apertura de la sede del centro.",link:"",soldout:false}],
+    gallery:[]
+  };
+
+  var $=function(s,r){return (r||document).querySelector(s);};
+  var data=DEFAULTS, BACKEND=false, AUTHED=false;
+
+  function merge(base,extra){
+    var out=Array.isArray(base)?base.slice():Object.assign({},base);
+    if(!extra||typeof extra!=="object") return out;
+    Object.keys(extra).forEach(function(k){
+      var ev=extra[k]; if(ev==null) return;
+      if(Array.isArray(ev)) out[k]=ev;
+      else if(typeof ev==="object"&&typeof out[k]==="object"&&!Array.isArray(out[k])) out[k]=merge(out[k],ev);
+      else out[k]=ev;
+    });
+    return out;
+  }
+  function toast(m,err){ var el=$("#barMsg"); el.textContent=m; el.className="bar__msg"+(err?" err":""); if(m) setTimeout(function(){ if(el.textContent===m) el.textContent=""; },4000); }
+
+  /* ---------- repeatable rows ---------- */
+  function pensumRow(x){
+    x=x||{code:"",name:"",credit:"",desc:""};
+    var d=document.createElement("div"); d.className="row";
+    d.innerHTML='<button class="row__x" title="Quitar">×</button>'+
+      '<div class="grid2"><div><label>Código</label><input type="text" class="p_code"></div>'+
+      '<div><label>Créditos</label><input type="text" class="p_credit"></div></div>'+
+      '<label>Nombre</label><input type="text" class="p_name">'+
+      '<label>Descripción</label><textarea class="p_desc"></textarea>';
+    $(".p_code",d).value=x.code||""; $(".p_credit",d).value=x.credit||"";
+    $(".p_name",d).value=x.name||""; $(".p_desc",d).value=x.desc||"";
+    $(".row__x",d).onclick=function(){ d.remove(); };
+    return d;
+  }
+  function agendaRow(x){
+    x=x||{date:"",title:"",desc:"",link:"",soldout:false};
+    var d=document.createElement("div"); d.className="row";
+    d.innerHTML='<button class="row__x" title="Quitar">×</button>'+
+      '<div class="grid2"><div><label>Fecha</label><input type="text" class="a_date" placeholder="Vie 12 dic"></div>'+
+      '<div><label>Enlace (boletas/reserva)</label><input type="url" class="a_link"></div></div>'+
+      '<label>Título</label><input type="text" class="a_title">'+
+      '<label>Descripción</label><textarea class="a_desc"></textarea>'+
+      '<label class="chk"><input type="checkbox" class="a_soldout"> Agotado</label>';
+    $(".a_date",d).value=x.date||""; $(".a_link",d).value=x.link||"";
+    $(".a_title",d).value=x.title||""; $(".a_desc",d).value=x.desc||"";
+    $(".a_soldout",d).checked=!!x.soldout;
+    $(".row__x",d).onclick=function(){ d.remove(); };
+    return d;
+  }
+  function galleryRow(x){
+    x=x||{src:"",alt:""};
+    var d=document.createElement("div"); d.className="row";
+    d.innerHTML='<button class="row__x" title="Quitar">×</button>'+
+      '<label>URL de la imagen</label><input type="url" class="g_src">'+
+      '<label>Texto alternativo</label><input type="text" class="g_alt">';
+    $(".g_src",d).value=x.src||""; $(".g_alt",d).value=x.alt||"";
+    $(".row__x",d).onclick=function(){ d.remove(); };
+    return d;
+  }
+  function sedeRow(x,i){
+    var d=document.createElement("div"); d.className="row";
+    d.innerHTML='<div class="grid2"><div><label>Letra</label><input type="text" class="s_letter"></div>'+
+      '<div><label>Nombre</label><input type="text" class="s_name"></div>'+
+      '<div><label>Barrio</label><input type="text" class="s_hood"></div>'+
+      '<div><label>Color (nombre)</label><input type="text" class="s_colorName"></div></div>'+
+      '<div class="inline"><input type="color" class="s_color"><span class="muted">Color</span>'+
+      '<label class="chk" style="margin:0 0 0 auto"><input type="checkbox" class="s_here"> Aquí</label></div>';
+    $(".s_letter",d).value=x.letter||""; $(".s_name",d).value=x.name||"";
+    $(".s_hood",d).value=x.hood||""; $(".s_colorName",d).value=x.colorName||"";
+    $(".s_color",d).value=/^#/.test(x.color||"")?x.color:"#2dff7f"; $(".s_here",d).checked=!!x.here;
+    return d;
+  }
+
+  /* ---------- fill + collect ---------- */
+  function fill(c){
+    $("#f_status").value=c.brand&&c.brand.status||"";
+    $("#f_stamp").value=c.hero&&c.hero.stamp||"";
+    $("#f_l1").value=c.location&&c.location.l1||"";
+    $("#f_l2").value=c.location&&c.location.l2||"";
+    var ch=c.channels||{};
+    ["instagram","whatsapp","tiktok","tickets","maps","email"].forEach(function(k){ $("#c_"+k).value=ch[k]||""; });
+
+    var sb=$("#sedesBox"); sb.innerHTML=""; (c.sedes||[]).forEach(function(s,i){ sb.appendChild(sedeRow(s,i)); });
+    var pb=$("#pensumBox"); pb.innerHTML=""; (c.pensum||[]).forEach(function(x){ pb.appendChild(pensumRow(x)); });
+    var ab=$("#agendaBox"); ab.innerHTML=""; (c.agenda||[]).forEach(function(x){ ab.appendChild(agendaRow(x)); });
+    var gb=$("#galleryBox"); gb.innerHTML=""; (c.gallery||[]).forEach(function(x){ gb.appendChild(galleryRow(x)); });
+  }
+  function val(sel,r){ var e=$(sel,r); return e?e.value.trim():""; }
+  function collect(){
+    var sedes=[].map.call($("#sedesBox").children,function(r){
+      return {letter:val(".s_letter",r),name:val(".s_name",r),hood:val(".s_hood",r),
+        colorName:val(".s_colorName",r),color:val(".s_color",r),here:$(".s_here",r).checked};
+    });
+    var pensum=[].map.call($("#pensumBox").children,function(r){
+      return {code:val(".p_code",r),name:val(".p_name",r),credit:val(".p_credit",r),desc:val(".p_desc",r)};
+    }).filter(function(x){return x.name;});
+    var agenda=[].map.call($("#agendaBox").children,function(r){
+      return {date:val(".a_date",r),title:val(".a_title",r),desc:val(".a_desc",r),link:val(".a_link",r),soldout:$(".a_soldout",r).checked};
+    }).filter(function(x){return x.title;});
+    var gallery=[].map.call($("#galleryBox").children,function(r){
+      return {src:val(".g_src",r),alt:val(".g_alt",r)};
+    }).filter(function(x){return x.src;});
+    return {
+      brand:{status:val("#f_status")},
+      hero:{stamp:val("#f_stamp")},
+      location:{l1:val("#f_l1"),l2:val("#f_l2")},
+      channels:{instagram:val("#c_instagram"),whatsapp:val("#c_whatsapp"),tiktok:val("#c_tiktok"),
+        tickets:val("#c_tickets"),maps:val("#c_maps"),email:val("#c_email")},
+      sedes:sedes, pensum:pensum, agenda:agenda, gallery:gallery
+    };
+  }
+
+  function download(obj,name){
+    var blob=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name||"content.json";
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+  }
+
+  /* ---------- actions ---------- */
+  function save(){
+    var c=collect();
+    if(BACKEND&&AUTHED){
+      toast("Guardando…");
+      fetch("/api/content",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(c)})
+        .then(function(r){ if(!r.ok) throw new Error(r.status); toast("Guardado en el servidor ✓"); })
+        .catch(function(e){ toast("No se pudo guardar ("+e.message+")",true); });
+    } else {
+      download(c,"content.json");
+      toast("Descargado content.json — súbelo con tu deploy.");
+    }
+  }
+
+  function loadSubs(){
+    if(!BACKEND||!AUTHED) return;
+    fetch("/api/subscribe",{cache:"no-store"}).then(function(r){ return r.ok?r.json():{subscribers:[]}; })
+      .then(function(d){
+        var box=$("#subsBox"), subs=d.subscribers||[];
+        if(!subs.length){ box.innerHTML='<p class="muted">Aún no hay inscritos.</p>'; return; }
+        box.innerHTML='<p class="muted" style="margin-bottom:8px">'+subs.length+' inscritos</p>'+
+          subs.map(function(s){ return '<div class="subs__item"><span>'+s.email+'</span><small>'+(s.at||"").slice(0,10)+'</small></div>'; }).join("");
+        box.dataset.csv=subs;
+        $("#subsCsv").onclick=function(){
+          var csv="email,fecha,origen\n"+subs.map(function(s){return [s.email,s.at||"",s.source||""].join(",");}).join("\n");
+          var blob=new Blob([csv],{type:"text/csv"}); var a=document.createElement("a");
+          a.href=URL.createObjectURL(blob); a.download="inscritos-campus-gamma.csv"; a.click(); URL.revokeObjectURL(a.href);
+        };
+      }).catch(function(){});
+  }
+
+  function showApp(){
+    $("#loginView").classList.add("hidden");
+    $("#appView").classList.remove("hidden");
+    var badge=$("#modeBadge"), note=$("#modeNote");
+    if(BACKEND){
+      badge.textContent="SERVIDOR"; badge.className="badge badge--srv";
+      note.textContent="Conectado al backend. Los cambios se guardan en vivo al tocar Guardar.";
+      $("#logoutBtn").classList.remove("hidden"); $("#subsCard").classList.remove("hidden");
+      loadSubs();
+    } else {
+      badge.textContent="LOCAL"; badge.className="badge badge--loc";
+      note.textContent="Sin backend (modo local). Edita y usa Guardar para descargar content.json; súbelo con tu deploy para publicarlo.";
+      $("#subsCard").classList.add("hidden");
+    }
+    fill(data);
+  }
+
+  function boot(){
+    // seed desde content.json versionado
+    fetch("/content.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():{}; }).catch(function(){return {};})
+      .then(function(seed){
+        data=merge(DEFAULTS,seed||{});
+        // ¿hay backend?
+        return fetch("/api/content",{cache:"no-store"}).then(function(r){
+          BACKEND=r.ok;
+          if(r.ok) return r.json().then(function(kv){ data=merge(data,kv||{}); });
+        }).catch(function(){ BACKEND=false; });
+      })
+      .then(function(){
+        if(BACKEND){
+          // comprobar sesión con un endpoint protegido
+          fetch("/api/subscribe",{cache:"no-store"}).then(function(r){
+            AUTHED=r.ok;
+            if(AUTHED) showApp(); else $("#loginView").classList.remove("hidden");
+          }).catch(function(){ $("#loginView").classList.remove("hidden"); });
+        } else {
+          AUTHED=false; showApp();
+        }
+      });
+  }
+
+  /* ---------- wire ---------- */
+  $("#loginForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var pw=$("#pw").value;
+    $("#loginMsg").textContent="";
+    fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:pw})})
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
+      .then(function(res){
+        if(res.ok){ AUTHED=true; showApp(); }
+        else $("#loginMsg").textContent=res.j.error||"No se pudo entrar.";
+      })
+      .catch(function(){ $("#loginMsg").textContent="Error de conexión."; });
+  });
+
+  $("#addPensum").onclick=function(){ $("#pensumBox").appendChild(pensumRow()); };
+  $("#addAgenda").onclick=function(){ $("#agendaBox").appendChild(agendaRow()); };
+  $("#addGallery").onclick=function(){ $("#galleryBox").appendChild(galleryRow()); };
+  $("#saveBtn").onclick=save;
+  $("#exportBtn").onclick=function(){ download(collect(),"content.json"); };
+  $("#importBtn").onclick=function(){ $("#importFile").click(); };
+  $("#importFile").addEventListener("change",function(e){
+    var f=e.target.files[0]; if(!f) return;
+    var fr=new FileReader();
+    fr.onload=function(){ try{ fill(merge(DEFAULTS,JSON.parse(fr.result))); toast("Importado ✓"); }catch(err){ toast("JSON inválido",true); } };
+    fr.readAsText(f);
+  });
+  $("#logoutBtn").onclick=function(){
+    fetch("/api/logout",{method:"POST"}).then(function(){ location.reload(); });
+  };
+
+  boot();
+})();
+</script>
+</body>
+</html>
