@@ -1,0 +1,356 @@
+{
+  "brand": {
+    "name": "CAMPUS",
+    "tagline": "La fraternidad más grande del país.",
+    "status": "COMING SOON"
+  },
+  "order": [
+    "alfa",
+    "beta",
+    "gamma"
+  ],
+  "landing": {
+    "flyer": ""
+  },
+  "sedes": {
+    "alfa": {
+      "name": "CAMPUS ALFA",
+      "sub": "ALFA",
+      "color": "#ff3b2e",
+      "colorName": "ROJO",
+      "hood": "Chapinero",
+      "rank": "La sede principal",
+      "logo": "/assets/alfa.jpg",
+      "flyer": "",
+      "tagline": "Donde empezó la fraternidad.",
+      "intro": "La primera. La más grande. La original. El espacio perfecto para estudiantes y amigos, en el corazón de Chapinero.",
+      "location": {
+        "l1": "Cll 60 #9-25",
+        "l2": "Chapinero · Bogotá D.C."
+      },
+      "maps": "https://www.google.com/maps/search/?api=1&query=Calle+60+9-25+Chapinero+Bogot%C3%A1",
+      "channels": {
+        "instagram": "https://instagram.com/campus.bogota",
+        "whatsapp": "",
+        "tiktok": "",
+        "tickets": "",
+        "email": ""
+      },
+      "schedule": [
+        {
+          "day": "MIÉRCOLES",
+          "title": "CÁTEDRA LIBRE",
+          "sub": "Arranca la semana"
+        },
+        {
+          "day": "JUEVES",
+          "title": "TARDEO",
+          "sub": "El clásico"
+        },
+        {
+          "day": "VIERNES",
+          "title": "FRATERNIDAD",
+          "sub": "El descontrol"
+        },
+        {
+          "day": "SÁBADO",
+          "title": "AFTER",
+          "sub": "Hasta tarde"
+        }
+      ],
+      "menu": [
+        {
+          "cat": "BOTELLAS",
+          "name": "Aguardiente Antioqueño",
+          "desc": "Botella 750ml",
+          "price": "$90.000"
+        },
+        {
+          "cat": "BOTELLAS",
+          "name": "Ron Medellín Añejo",
+          "desc": "Botella 750ml",
+          "price": "$110.000"
+        },
+        {
+          "cat": "BOTELLAS",
+          "name": "Old Parr 12 años",
+          "desc": "Botella",
+          "price": "$280.000"
+        },
+        {
+          "cat": "CÓCTELES",
+          "name": "Coctel de la casa",
+          "desc": "",
+          "price": "$22.000"
+        },
+        {
+          "cat": "CÓCTELES",
+          "name": "Gin tónic",
+          "desc": "",
+          "price": "$25.000"
+        },
+        {
+          "cat": "SHOTS",
+          "name": "Jägermeister",
+          "desc": "",
+          "price": "$12.000"
+        },
+        {
+          "cat": "SHOTS",
+          "name": "Tequila",
+          "desc": "",
+          "price": "$10.000"
+        },
+        {
+          "cat": "CERVEZA",
+          "name": "Nacional",
+          "desc": "",
+          "price": "$8.000"
+        },
+        {
+          "cat": "CERVEZA",
+          "name": "Corona",
+          "desc": "",
+          "price": "$12.000"
+        }
+      ],
+      "agenda": [
+        {
+          "date": "Cada semana",
+          "title": "Tardeos en Alfa",
+          "desc": "Chapinero no para. Sigue la cuenta para las próximas fechas.",
+          "link": "",
+          "soldout": false,
+          "flyer": ""
+        }
+      ],
+      "gallery": []
+    },
+    "beta": {
+      "name": "CAMPUS BETA",
+      "sub": "BETA",
+      "color": "#2e6bff",
+      "colorName": "AZUL",
+      "hood": "Teusaquillo",
+      "rank": "La segunda sede",
+      "logo": "/assets/beta.jpg",
+      "flyer": "",
+      "tagline": "La fraternidad está creciendo.",
+      "intro": "El segundo capítulo de la fraternidad. Mismo descontrol, nuevo barrio. Música, ambiente y fiesta.",
+      "location": {
+        "l1": "CL 47 #14-22",
+        "l2": "Teusaquillo · Bogotá D.C."
+      },
+      "maps": "https://www.google.com/maps/search/?api=1&query=Calle+47+14-22+Bogot%C3%A1",
+      "channels": {
+        "instagram": "https://instagram.com/campusbeta.bogota",
+        "whatsapp": "",
+        "tiktok": "",
+        "tickets": "",
+        "email": ""
+      },
+      "schedule": [
+        {
+          "day": "MIÉRCOLES",
+          "title": "CÁTEDRA LIBRE",
+          "sub": "Arranca la semana"
+        },
+        {
+          "day": "JUEVES",
+          "title": "TARDEO",
+          "sub": "El clásico"
+        },
+        {
+          "day": "VIERNES",
+          "title": "FRATERNIDAD",
+          "sub": "El descontrol"
+        },
+        {
+          "day": "SÁBADO",
+          "title": "AFTER",
+          "sub": "Hasta tarde"
+        }
+      ],
+      "menu": [
+        {
+          "cat": "BOTELLAS",
+          "name": "Aguardiente Antioqueño",
+          "desc": "Botella 750ml",
+          "price": "$90.000"
+        },
+        {
+          "cat": "BOTELLAS",
+          "name": "Ron Medellín Añejo",
+          "desc": "Botella 750ml",
+          "price": "$110.000"
+        },
+        {
+          "cat": "BOTELLAS",
+          "name": "Old Parr 12 años",
+          "desc": "Botella",
+          "price": "$280.000"
+        },
+        {
+          "cat": "CÓCTELES",
+          "name": "Coctel de la casa",
+          "desc": "",
+          "price": "$22.000"
+        },
+        {
+          "cat": "CÓCTELES",
+          "name": "Gin tónic",
+          "desc": "",
+          "price": "$25.000"
+        },
+        {
+          "cat": "SHOTS",
+          "name": "Jägermeister",
+          "desc": "",
+          "price": "$12.000"
+        },
+        {
+          "cat": "SHOTS",
+          "name": "Tequila",
+          "desc": "",
+          "price": "$10.000"
+        },
+        {
+          "cat": "CERVEZA",
+          "name": "Nacional",
+          "desc": "",
+          "price": "$8.000"
+        },
+        {
+          "cat": "CERVEZA",
+          "name": "Corona",
+          "desc": "",
+          "price": "$12.000"
+        }
+      ],
+      "agenda": [
+        {
+          "date": "Cada semana",
+          "title": "Tardeos en Beta",
+          "desc": "La fraternidad sigue creciendo. Sigue la cuenta para las fechas.",
+          "link": "",
+          "soldout": false,
+          "flyer": ""
+        }
+      ],
+      "gallery": []
+    },
+    "gamma": {
+      "name": "CAMPUS GAMMA",
+      "sub": "GAMMA",
+      "color": "#2dff7f",
+      "colorName": "VERDE",
+      "hood": "Centro",
+      "rank": "La sede del centro",
+      "logo": "/assets/gamma.jpg",
+      "flyer": "",
+      "tagline": "Nos tomamos el centro de la capital.",
+      "intro": "La fraternidad llegó al corazón de Bogotá. Diagonal al Museo del Oro, donde la ciudad aprendió a rumbear.",
+      "location": {
+        "l1": "Av. Jiménez #05-40",
+        "l2": "Diagonal al Museo del Oro · Centro · Bogotá"
+      },
+      "maps": "https://www.google.com/maps/search/?api=1&query=Avenida+Jim%C3%A9nez+5-40+Bogot%C3%A1",
+      "channels": {
+        "instagram": "https://instagram.com/campusgamma.bogota",
+        "whatsapp": "",
+        "tiktok": "",
+        "tickets": "",
+        "email": ""
+      },
+      "schedule": [
+        {
+          "day": "MIÉRCOLES",
+          "title": "CÁTEDRA LIBRE",
+          "sub": "Arranca la semana"
+        },
+        {
+          "day": "JUEVES",
+          "title": "EL MERENGÓN",
+          "sub": "Merengue + reggaetón"
+        },
+        {
+          "day": "VIERNES",
+          "title": "FRATERNIDAD",
+          "sub": "El descontrol"
+        },
+        {
+          "day": "SÁBADO",
+          "title": "AFTER",
+          "sub": "Hasta tarde"
+        }
+      ],
+      "menu": [
+        {
+          "cat": "BOTELLAS",
+          "name": "Aguardiente Antioqueño",
+          "desc": "Botella 750ml",
+          "price": "$90.000"
+        },
+        {
+          "cat": "BOTELLAS",
+          "name": "Ron Medellín Añejo",
+          "desc": "Botella 750ml",
+          "price": "$110.000"
+        },
+        {
+          "cat": "BOTELLAS",
+          "name": "Old Parr 12 años",
+          "desc": "Botella",
+          "price": "$280.000"
+        },
+        {
+          "cat": "CÓCTELES",
+          "name": "Coctel de la casa",
+          "desc": "",
+          "price": "$22.000"
+        },
+        {
+          "cat": "CÓCTELES",
+          "name": "Gin tónic",
+          "desc": "",
+          "price": "$25.000"
+        },
+        {
+          "cat": "SHOTS",
+          "name": "Jägermeister",
+          "desc": "",
+          "price": "$12.000"
+        },
+        {
+          "cat": "SHOTS",
+          "name": "Tequila",
+          "desc": "",
+          "price": "$10.000"
+        },
+        {
+          "cat": "CERVEZA",
+          "name": "Nacional",
+          "desc": "",
+          "price": "$8.000"
+        },
+        {
+          "cat": "CERVEZA",
+          "name": "Corona",
+          "desc": "",
+          "price": "$12.000"
+        }
+      ],
+      "agenda": [
+        {
+          "date": "Próximamente",
+          "title": "El centro ya tiene nuevo punto de encuentro",
+          "desc": "La sede del centro apenas comienza. Sigue la cuenta.",
+          "link": "",
+          "soldout": false,
+          "flyer": ""
+        }
+      ],
+      "gallery": []
+    }
+  }
+}

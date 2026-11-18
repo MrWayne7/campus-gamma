@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reservas en Campus Bogotá: cumpleaños, grupos y mesas | Alfa, Beta y Gamma</title>
+<meta name="description" content="Reserva tu cumpleaños, tu parche o tu mesa para el tardeo en Campus Alfa (Chapinero), Beta (Teusaquillo) o Gamma (Centro). Confirmamos por WhatsApp.">
+<link rel="canonical" href="https://campus-gamma.pages.dev/reservas/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="CAMPUS">
+<meta property="og:title" content="Reservas en Campus Bogotá: cumpleaños, grupos y mesas | Alfa, Beta y Gamma">
+<meta property="og:description" content="Reserva tu cumpleaños, tu parche o tu mesa para el tardeo en Campus Alfa (Chapinero), Beta (Teusaquillo) o Gamma (Centro). Confirmamos por WhatsApp.">
+<meta property="og:image" content="https://campus-gamma.pages.dev/assets/alfa.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Graduate&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--ink:#08080b;--ink-2:#101015;--field:#0e0e14;--bone:#f2e9d2;--dim:#b4ac98;--alfa:#ff3b2e;--beta:#2e6bff;--gamma:#2dff7f;--c:#2dff7f;
+  --pad:clamp(20px,5vw,64px);--safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);
+  --f-display:"Anton","Arial Narrow",sans-serif;--f-crest:"Graduate",Georgia,serif;--f-body:"Space Grotesk",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);background:var(--ink);color:var(--bone);line-height:1.55;min-height:100svh;display:flex;flex-direction:column;overflow-x:clip;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60% 40% at 15% 0,rgba(255,59,46,.13),transparent 70%),radial-gradient(55% 40% at 90% 20%,rgba(46,107,255,.12),transparent 70%),radial-gradient(60% 45% at 50% 100%,rgba(45,255,127,.1),transparent 70%)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--bone);outline-offset:3px;border-radius:4px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + var(--safe-t)) var(--pad) 14px}
+.nav__brand{font-family:var(--f-crest);font-size:16px;letter-spacing:.08em;text-decoration:none}
+.nav__links{display:flex;gap:clamp(12px,3vw,22px);font-size:13px;letter-spacing:.08em;color:var(--dim)}
+.nav__links a{text-decoration:none;padding:10px 0}.nav__links a:hover{color:var(--bone)}
+main{flex:1;width:100%;max-width:760px;margin:0 auto;padding:clamp(28px,6vw,64px) var(--pad) 72px}
+.kick{font-family:var(--f-crest);font-size:13px;letter-spacing:.14em;color:var(--dim)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,10vw,84px);line-height:.96;margin-top:10px}
+h1 em{font-style:normal;color:var(--c)}
+h2{font-family:var(--f-crest);font-weight:400;font-size:20px;margin:34px 0 8px}
+.lead{margin-top:16px;color:var(--dim);font-size:clamp(15px,2.3vw,18px);max-width:52ch}
+p+p{margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-family:inherit;font-weight:700;font-size:15px;
+  text-decoration:none;cursor:pointer;border:1.5px solid rgba(242,233,210,.3);background:transparent;color:var(--bone);transition:transform .15s,border-color .2s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--c)}
+.btn--fill{background:var(--c);color:#07090a;border-color:transparent}
+.btn--fill:hover{box-shadow:0 10px 30px color-mix(in srgb,var(--c) 40%,transparent)}
+.btn[disabled]{opacity:.55;cursor:wait;transform:none}
+.foot{border-top:1px solid rgba(242,233,210,.1);padding:26px var(--pad) calc(26px + var(--safe-b));display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--bone)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+form{margin-top:30px;display:grid;gap:16px}
+label{display:block;font-size:13px;font-weight:700;letter-spacing:.03em;color:var(--dim);margin-bottom:7px}
+input[type=text],input[type=tel],textarea{width:100%;background:var(--field);color:var(--bone);border:1px solid rgba(242,233,210,.18);border-radius:12px;padding:14px 16px;font-family:inherit;font-size:16px}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 18%,transparent)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt span{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(242,233,210,.2);font-weight:700;font-size:14px;transition:.15s}
+.opt input:checked+span{background:var(--oc,var(--bone));color:#07090a;border-color:transparent}
+.opt input:focus-visible+span{outline:2px solid var(--bone);outline-offset:3px}
+.ok{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--dim)}
+.ok input{width:20px;height:20px;margin-top:2px;accent-color:var(--c);flex:none}
+.ok a{color:var(--bone)}
+.hp{position:absolute;left:-9999px}
+.msg{min-height:22px;font-size:14px;color:#ff9a5c}
+.done{margin-top:30px;border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:18px;padding:26px;background:var(--ink-2)}
+.done h2{margin-top:0}
+.done .btn{margin-top:16px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Principal">
+  <a class="nav__brand" href="/">CAMPUS</a>
+  <div class="nav__links"><a href="/alfa">Alfa</a><a href="/beta">Beta</a><a href="/gamma">Gamma</a><a href="/3d/">3D</a></div>
+</nav>
+<main>
+<p class="kick">Reservas</p>
+<h1>Reserva tu <em>parche.</em></h1>
+<p class="lead">Cumpleaños, grupo grande o mesa para el tardeo en cualquiera de las tres sedes de Campus en Bogotá. Déjanos tus datos y te confirmamos por WhatsApp.</p>
+
+<form id="f" novalidate>
+  <div><label for="nombre">Tu nombre</label><input type="text" id="nombre" name="nombre" autocomplete="name" required maxlength="80"></div>
+  <div><label for="celular">Tu celular (WhatsApp)</label><input type="tel" id="celular" name="celular" autocomplete="tel" inputmode="tel" required maxlength="24" placeholder="300 000 0000"></div>
+  <div><label id="l-sede">¿En cuál sede?</label>
+    <div class="opts" role="radiogroup" aria-labelledby="l-sede">
+      <label class="opt" style="--oc:var(--alfa)"><input type="radio" name="sede" value="alfa"><span>Alfa · Chapinero</span></label>
+      <label class="opt" style="--oc:var(--beta)"><input type="radio" name="sede" value="beta"><span>Beta · Teusaquillo</span></label>
+      <label class="opt" style="--oc:var(--gamma)"><input type="radio" name="sede" value="gamma"><span>Gamma · Centro</span></label>
+    </div></div>
+  <div><label id="l-oc">¿Qué celebran?</label>
+    <div class="opts" role="radiogroup" aria-labelledby="l-oc">
+      <label class="opt"><input type="radio" name="ocasion" value="Cumpleaños"><span>Cumpleaños</span></label>
+      <label class="opt"><input type="radio" name="ocasion" value="Parche grande"><span>Parche grande</span></label>
+      <label class="opt"><input type="radio" name="ocasion" value="Mesa para el tardeo" checked><span>Mesa para el tardeo</span></label>
+    </div></div>
+  <div><label for="detalle">Fecha y cuántos van (opcional)</label><textarea id="detalle" name="detalle" maxlength="300" placeholder="Ej.: viernes 27, somos 12"></textarea></div>
+  <label class="hp" aria-hidden="true">No llenar<input type="text" name="web" tabindex="-1" autocomplete="off"></label>
+  <label class="ok"><input type="checkbox" id="acepta" required><span>Autorizo a Campus a usar estos datos para responder mi solicitud, según la <a href="/privacidad/">política de privacidad</a>.</span></label>
+  <p class="msg" id="msg" role="alert"></p>
+  <button class="btn btn--fill" type="submit" id="send">Enviar solicitud</button>
+</form>
+
+<div class="done" id="done" hidden>
+  <h2>Solicitud recibida.</h2>
+  <p id="doneTxt">Te escribimos por WhatsApp para confirmar tu reserva.</p>
+  <a class="btn btn--fill" id="waBtn" href="#" target="_blank" rel="noopener" hidden>Abrir WhatsApp ahora</a>
+  <a class="btn" id="sedeBtn" href="/">Ver la sede</a>
+</div>
+</main>
+<footer class="foot">
+  <span>CAMPUS · BOGOTÁ</span>
+  <a href="/">Inicio</a><a href="/alfa">Alfa</a><a href="/beta">Beta</a><a href="/gamma">Gamma</a><a href="/3d/">Viaje 3D</a><a href="/reservas/">Reservas</a><a href="/privacidad/">Privacidad</a>
+  <span>Sitio por BASHI</span>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var NOMBRES={alfa:"Alfa",beta:"Beta",gamma:"Gamma"},COL={alfa:"#ff3b2e",beta:"#2e6bff",gamma:"#2dff7f"},SEDES={};
+  var q=/[?&]sede=(alfa|beta|gamma)/.exec(location.search);
+  function setSede(k){document.documentElement.style.setProperty("--c",COL[k]||"#2dff7f");}
+  if(q){var r=document.querySelector('input[name=sede][value="'+q[1]+'"]');if(r){r.checked=true;setSede(q[1]);}}
+  document.querySelectorAll("input[name=sede]").forEach(function(i){i.addEventListener("change",function(){setSede(i.value);});});
+  function g(u){return fetch(u,{cache:"no-store"}).then(function(r){return r.ok?r.json():{};}).catch(function(){return {};});}
+  Promise.all([g("/content.json"),g("/api/content")]).then(function(r){
+    var a=(r[0]&&r[0].sedes)||{},b=(r[1]&&r[1].sedes)||{};
+    ["alfa","beta","gamma"].forEach(function(k){SEDES[k]=Object.assign({},a[k]||{},b[k]||{});});
+  });
+  function wa(v){if(!v)return"";if(/^https?:/i.test(v))return v.split("?")[0];var d=String(v).replace(/\D/g,"");return d?"https://wa.me/"+d:"";}
+  var f=$("#f"),msg=$("#msg"),send=$("#send");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();msg.textContent="";
+    var d=new FormData(f),sede=d.get("sede")||"",nombre=(d.get("nombre")||"").trim(),cel=(d.get("celular")||"").trim();
+    if(nombre.length<2){msg.textContent="Escribe tu nombre.";$("#nombre").focus();return;}
+    if(cel.replace(/\D/g,"").length<7){msg.textContent="Escribe un celular válido.";$("#celular").focus();return;}
+    if(!sede){msg.textContent="Elige una sede.";return;}
+    if(!$("#acepta").checked){msg.textContent="Marca la autorización de datos para continuar.";return;}
+    var body={nombre:nombre,celular:cel,sede:sede,ocasion:d.get("ocasion")||"",detalle:(d.get("detalle")||"").trim(),web:d.get("web")||"",acepta:true,pagina:"/reservas"};
+    send.disabled=true;send.textContent="Enviando…";
+    fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};},function(){return {ok:false,j:{}};});})
+      .catch(function(){return {ok:false,j:{}};})
+      .then(function(res){
+        var link=wa(SEDES[sede]&&SEDES[sede].channels&&SEDES[sede].channels.whatsapp);
+        var texto="Hola, vengo de la página de reservas de Campus "+NOMBRES[sede]+". Soy "+nombre+". "+body.ocasion+(body.detalle?": "+body.detalle:"")+".";
+        if(!res.ok&&res.j&&res.j.error){msg.textContent=res.j.error;send.disabled=false;send.textContent="Enviar solicitud";return;}
+        if(!res.ok&&!link){msg.textContent="No pudimos enviar la solicitud. Revisa tu conexión e inténtalo de nuevo.";send.disabled=false;send.textContent="Enviar solicitud";return;}
+        f.hidden=true;$("#done").hidden=false;$("#sedeBtn").href="/"+sede;$("#sedeBtn").textContent="Ver Campus "+NOMBRES[sede];
+        if(link){var b=$("#waBtn");b.href=link+"?text="+encodeURIComponent(texto);b.hidden=false;$("#doneTxt").textContent="Para confirmar más rápido, envíanos el mensaje que ya te dejamos escrito en WhatsApp.";}
+        $("#done").scrollIntoView({block:"center"});
+      });
+  });
+})();
+</script>
+</body>
+</html>

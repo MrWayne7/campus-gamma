@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus en 3D: una noche por las tres casas de la fraternidad | Bogotá</title>
+<meta name="description" content="Recorre en 3D las tres sedes de Campus en Bogotá: Alfa en Chapinero, Beta en Teusaquillo y Gamma en el centro. Una noche, tres casas, una sola fraternidad.">
+<link rel="canonical" href="https://campus-gamma.pages.dev/3d/">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#05060c">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="CAMPUS">
+<meta property="og:title" content="Campus en 3D: una noche, tres casas">
+<meta property="og:description" content="Cruza Alfa, Beta y Gamma hasta la pista. La fraternidad más grande del país, en un solo viaje.">
+<meta property="og:url" content="https://campus-gamma.pages.dev/3d/">
+<meta property="og:image" content="https://campus-gamma.pages.dev/assets/og-3d.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://campus-gamma.pages.dev/assets/og-3d.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" as="script" href="js/three.min.js">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Graduate&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Campus en 3D: una noche, tres casas","url":"https://campus-gamma.pages.dev/3d/","inLanguage":"es-CO","isPartOf":{"@type":"WebSite","name":"CAMPUS","url":"https://campus-gamma.pages.dev/"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Campus","item":"https://campus-gamma.pages.dev/"},{"@type":"ListItem","position":2,"name":"Viaje 3D","item":"https://campus-gamma.pages.dev/3d/"}]}}</script>
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#08080b; --ink-2:#101015; --bone:#f2e9d2; --dim:#b4ac98;
+  --alfa:#ff3b2e; --beta:#2e6bff; --gamma:#2dff7f; --acc:#ffb65c;
+  --pad:clamp(18px,4.6vw,56px);
+  --st:env(safe-area-inset-top,0px); --sb:env(safe-area-inset-bottom,0px);
+  --f-crest:"Graduate",Georgia,serif; --f-display:"Anton",Impact,sans-serif; --f-body:"Space Grotesk",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);background:#05060c;color:var(--bone);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html,body{overflow-x:clip}
+.sec{overflow-x:clip}
+@media(max-width:420px){.nav-links{gap:10px;font-size:12px}}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--bone);outline-offset:3px;border-radius:3px}
+@view-transition{navigation:auto}
+
+/* fondo fijo: se ve antes de que cargue el 3D y si no hay WebGL */
+#bg{position:fixed;inset:0;z-index:0;background:
+  radial-gradient(60% 46% at 18% 30%,rgba(255,59,46,.22),transparent 70%),
+  radial-gradient(56% 44% at 82% 40%,rgba(46,107,255,.22),transparent 70%),
+  radial-gradient(70% 50% at 50% 100%,rgba(45,255,127,.2),transparent 70%),#05060c}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:1;display:block;opacity:0;transition:opacity 1.2s ease}
+.gl-on #gl{opacity:1}
+.gl-off #gl,.gl-lost #gl{display:none}
+
+/* cargador */
+#loader{position:fixed;inset:0;z-index:100;background:#040407;display:grid;place-items:center;transition:opacity .7s ease,visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+.ld{text-align:center}
+.ld-l{display:flex;gap:clamp(18px,5vw,34px);justify-content:center;font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(46px,12vw,84px);line-height:1}
+.ld-l span{color:#1c1c22;transition:color .35s,text-shadow .35s}
+#loader[data-k="1"] .ld-l span:nth-child(1),#loader[data-k="2"] .ld-l span:nth-child(-n+2),#loader[data-k="3"] .ld-l span{color:var(--c);text-shadow:0 0 22px var(--c)}
+.ld-row{display:flex;justify-content:space-between;gap:30px;margin-top:22px;font-size:12px;letter-spacing:.16em;color:var(--dim)}
+
+.cur{position:fixed;left:-17px;top:-17px;width:34px;height:34px;border:1.5px solid var(--bone);border-radius:50%;z-index:90;pointer-events:none;opacity:0;mix-blend-mode:difference;transition:opacity .3s,width .2s,height .2s,margin .2s,background .2s}
+.cur.on{opacity:1}.cur.big{width:56px;height:56px;margin:-11px 0 0 -11px;background:var(--bone)}
+@media(hover:none),(pointer:coarse){.cur{display:none}}
+
+/* nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:calc(12px + var(--st)) var(--pad) 12px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+#nav.solid{background:rgba(8,8,11,.93);backdrop-filter:blur(10px);border-color:rgba(242,233,210,.12)}
+.wm{font-family:var(--f-crest);font-size:16px;letter-spacing:.08em;text-decoration:none}
+.nav-links{display:flex;gap:clamp(12px,3vw,24px);font-size:13px;letter-spacing:.08em;color:var(--dim)}
+.nav-links a{text-decoration:none;padding:6px 0}
+.nav-links a:hover{color:var(--bone)}
+.nav-links .a:hover{color:var(--alfa)}.nav-links .b:hover{color:var(--beta)}.nav-links .g:hover{color:var(--gamma)}
+.nav-links .hm{display:none}
+@media(min-width:620px){.nav-links .hm{display:inline}}
+
+/* el viaje */
+.hero{position:relative;z-index:2;height:820vh}
+.hero-ui{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:space-between;
+  padding:calc(64px + var(--st)) var(--pad) calc(18px + var(--sb));pointer-events:none}
+.hero-ui a,.hero-ui button{pointer-events:auto}
+.hero-meta{display:flex;justify-content:space-between;gap:20px;font-size:12.5px;letter-spacing:.06em;color:var(--dim);line-height:1.6}
+.hero-meta b{color:var(--bone);font-weight:500}
+.hero-meta .r{text-align:right}
+.hero-core{flex:1;display:grid;place-items:center;text-align:center}
+.hero-title{will-change:transform,opacity}
+.hero-title h1{font-family:var(--f-crest);font-weight:400;font-size:clamp(54px,calc((100vw - 2*var(--pad))/4.7),230px);line-height:.9;color:var(--bone);
+  text-shadow:0 0 40px rgba(242,233,210,.18)}
+.hero-title h1 span{display:inline-block;opacity:0;transform:translateY(60%)}
+.ready .hero-title h1 span{animation:rise .9s var(--ease) forwards;animation-delay:calc(var(--i)*70ms + 150ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero-title .sub{font-family:var(--f-display);font-size:clamp(15px,3.6vw,26px);letter-spacing:.2em;margin-top:14px;opacity:0}
+.ready .hero-title .sub{animation:fade 1s ease .8s forwards}
+.hero-title .sub i{font-style:normal}
+.hero-title .sub .a{color:var(--alfa)}.hero-title .sub .b{color:var(--beta)}.hero-title .sub .g{color:var(--gamma)}
+@keyframes fade{to{opacity:1}}
+
+.cap{display:flex;align-items:flex-start;gap:14px;max-width:min(560px,100%);opacity:0;transform:translateY(14px);transition:opacity .35s,transform .45s var(--ease)}
+.cap.on{opacity:1;transform:none}
+.cap-n{font-family:var(--f-display);font-size:clamp(34px,7vw,58px);line-height:.9;color:var(--acc);text-shadow:0 0 22px var(--acc);transition:color .4s}
+.cap-t{font-family:var(--f-crest);font-size:clamp(20px,4.4vw,32px);line-height:1.05}
+.cap-s{font-size:clamp(13.5px,2.6vw,16px);color:var(--dim);margin-top:5px;max-width:38ch}
+.hero-bar{display:flex;align-items:center;gap:14px;margin-top:16px;font-size:12px;letter-spacing:.1em;color:var(--dim)}
+.bar-idx{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-line{position:relative;flex:1;height:2px;background:rgba(242,233,210,.16)}
+.bar-line i{position:absolute;inset:0;background:var(--acc);transform-origin:left;transform:scaleX(0);box-shadow:0 0 10px var(--acc);transition:background .4s}
+.bar-tick{position:absolute;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;background:none;border:0;cursor:pointer;padding:0}
+.bar-tick::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--tc);box-shadow:0 0 8px var(--tc)}
+.skip{color:var(--bone);text-decoration:none;border:1px solid rgba(242,233,210,.3);border-radius:999px;padding:9px 14px;white-space:nowrap;min-height:38px;display:inline-flex;align-items:center}
+.skip:hover{border-color:var(--acc);color:var(--acc)}
+.hint{position:absolute;left:50%;bottom:calc(92px + var(--sb));transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:var(--dim);display:flex;flex-direction:column;align-items:center;gap:8px;white-space:nowrap}
+.hint span{width:1px;height:30px;background:linear-gradient(var(--bone),transparent);animation:drop 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0)}55%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* sin 3D: portada normal */
+.gl-off .hero{height:100vh;height:100svh}
+.gl-off .cap,.gl-off .hero-bar .bar-line,.gl-off .bar-idx,.gl-off .hint{display:none}
+.gl-off .hero-bar{justify-content:center}
+
+/* contenido: lo mismo del viaje, en texto */
+main{position:relative;z-index:3;background:var(--ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.sec{padding:clamp(70px,11vw,130px) 0}
+.kick{font-family:var(--f-crest);font-size:13px;letter-spacing:.14em;color:var(--dim)}
+h2{font-family:var(--f-display);font-weight:400;font-size:clamp(36px,8vw,78px);line-height:.98;margin-top:14px;max-width:16ch}
+.lead{color:var(--dim);font-size:clamp(15px,2.3vw,18px);max-width:54ch;margin-top:18px;line-height:1.65}
+[data-rv]{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .9s var(--ease)}
+[data-rv="l"]{transform:translateX(-46px)}[data-rv="r"]{transform:translateX(46px)}
+[data-rv].in{opacity:1;transform:none}
+
+.casas{display:grid;gap:16px;margin-top:40px}
+.casa{position:relative;overflow:hidden;border:1px solid color-mix(in srgb,var(--c) 38%,transparent);border-radius:22px;background:var(--ink-2);padding:26px;display:grid;gap:18px;align-content:start}
+.casa::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background:radial-gradient(circle at 15% 0,color-mix(in srgb,var(--c) 26%,transparent),transparent 60%)}
+.casa>*{position:relative}
+.casa-top{display:flex;align-items:center;gap:16px}
+.casa img{width:76px;height:76px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 60%,transparent),0 0 28px color-mix(in srgb,var(--c) 40%,transparent)}
+.casa h3{font-family:var(--f-crest);font-weight:400;font-size:clamp(22px,4.6vw,28px);line-height:1.05}
+.casa .rank{font-size:12px;letter-spacing:.12em;color:var(--c);margin-top:4px}
+.casa p{color:var(--dim);font-size:15px;line-height:1.6}
+.casa address{font-style:normal;font-size:15px;color:var(--bone);border-left:2px solid var(--c);padding-left:12px}
+.casa address span{display:block;color:var(--dim);font-size:13.5px}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--f-body);font-weight:700;font-size:14px;letter-spacing:.02em;text-decoration:none;border-radius:999px;padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(242,233,210,.3);transition:transform .15s,box-shadow .25s,border-color .2s,color .2s}
+.btn:hover{border-color:var(--c,var(--bone));color:var(--c,var(--bone))}
+.btn-fill{background:var(--c,var(--bone));color:#07090b;border-color:transparent}
+.btn-fill:hover{color:#07090b;transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--c,#f2e9d2) 40%,transparent)}
+
+.ruta{display:grid;gap:0;margin-top:36px;border-top:1px solid rgba(242,233,210,.14)}
+.ruta li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:20px 2px;border-bottom:1px solid rgba(242,233,210,.14)}
+.ruta b{font-family:var(--f-display);font-weight:400;font-size:26px;color:var(--c);line-height:1}
+.ruta h3{font-family:var(--f-crest);font-weight:400;font-size:20px}
+.ruta p{grid-column:2;color:var(--dim);font-size:14.5px;max-width:62ch}
+
+.fin{text-align:center}
+.fin h2{margin-inline:auto}
+.fin .lead{margin-inline:auto}
+.fin .acts{justify-content:center;margin-top:30px}
+
+.foot{position:relative;z-index:3;background:var(--ink);border-top:1px solid rgba(242,233,210,.12);padding:38px var(--pad) calc(38px + var(--sb));font-size:13px;color:var(--dim)}
+.foot-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:14px 26px;justify-content:space-between;align-items:center}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 18px}
+.foot a{text-decoration:none}.foot a:hover{color:var(--bone)}
+.foot b{font-family:var(--f-crest);font-weight:400;color:var(--bone);letter-spacing:.06em}
+
+@media(min-width:820px){.casas{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.hero{height:700vh}.hero-meta .r{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-title h1 span,.hero-title .sub,[data-rv]{opacity:1!important;transform:none!important}}
+</style>
+<noscript><style>#loader{display:none}.hero{height:100svh}.hero-title h1 span,.hero-title .sub,[data-rv]{opacity:1;transform:none}.cap,.bar-line,.bar-idx,.hint{display:none}</style></noscript>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<div id="loader" role="status" aria-live="polite" data-k="1">
+  <div class="ld">
+    <div class="ld-l" aria-hidden="true"><span style="--c:#ff3b2e">Α</span><span style="--c:#2e6bff">Β</span><span style="--c:#2dff7f">Γ</span></div>
+    <div class="ld-row"><span>ABRIENDO LA PUERTA</span><span id="load-n">000</span></div>
+  </div>
+</div>
+
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<nav id="nav" aria-label="Principal">
+  <a href="/" class="wm" aria-label="Campus, inicio">CAMPUS</a>
+  <div class="nav-links">
+    <a class="a" href="/alfa">Alfa</a>
+    <a class="b" href="/beta">Beta</a>
+    <a class="g" href="/gamma">Gamma</a>
+    <a class="hm" href="#casas">Las casas</a>
+    <a class="hm" href="/">Inicio</a>
+  </div>
+</nav>
+
+<!-- ================= EL VIAJE ================= -->
+<header class="hero" id="top">
+  <div class="hero-ui" id="hero-ui">
+    <div class="hero-meta" id="hero-meta">
+      <p><b>Una noche, tres casas</b><br>Bogotá, Colombia</p>
+      <p class="r"><b>La fraternidad más grande del país</b><br>Chapinero · Teusaquillo · Centro</p>
+    </div>
+
+    <div class="hero-core">
+      <div class="hero-title" id="hero-title">
+        <h1 aria-label="Campus"><span style="--i:0">C</span><span style="--i:1">A</span><span style="--i:2">M</span><span style="--i:3">P</span><span style="--i:4">U</span><span style="--i:5">S</span></h1>
+        <div class="sub"><i class="a">ALFA</i> · <i class="b">BETA</i> · <i class="g">GAMMA</i></div>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <div class="cap" id="cap" aria-live="polite">
+        <div class="cap-n" id="cap-n">01</div>
+        <div>
+          <div class="cap-t" id="cap-t">La calle</div>
+          <div class="cap-s" id="cap-s">Centro de Bogotá. La noche apenas empieza.</div>
+        </div>
+      </div>
+      <div class="hero-bar">
+        <span class="bar-idx" id="bar-idx">01 / 05</span>
+        <div class="bar-line" id="bar-line"><i id="bar-fill"></i></div>
+        <a href="#casas" class="skip">Saltar el viaje</a>
+      </div>
+      <div class="hint" id="hint" aria-hidden="true"><span></span>DESLIZA PARA ENTRAR</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= LO MISMO, EN TEXTO ================= -->
+<main id="main">
+  <section class="sec" id="casas">
+    <div class="wrap">
+      <p class="kick" data-rv>Las sedes de Campus en Bogotá</p>
+      <h2 data-rv>Tres casas, una sola fraternidad.</h2>
+      <p class="lead" data-rv>Campus es un club de tardeos y fiesta universitaria con tres sedes en Bogotá. Cada una tiene su barrio, su color y su parche. Elige la que te quede más cerca.</p>
+
+      <div class="casas">
+        <article class="casa" style="--c:#ff3b2e" data-rv="l">
+          <div class="casa-top">
+            <img src="/assets/alfa.jpg" alt="Logo de Campus Alfa" width="640" height="640" loading="lazy" decoding="async">
+            <div><h3>Campus Alfa</h3><div class="rank">LA SEDE PRINCIPAL</div></div>
+          </div>
+          <p>Donde empezó la fraternidad. La primera y la más grande: el espacio para estudiantes y amigos en el corazón de Chapinero.</p>
+          <address>Cll 60 #9-25<span>Chapinero, Bogotá D.C.</span></address>
+          <div class="acts">
+            <a class="btn btn-fill" href="/alfa">Entrar a Alfa</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+60+9-25+Chapinero+Bogot%C3%A1" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn" href="https://instagram.com/campus.bogota" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </article>
+
+        <article class="casa" style="--c:#2e6bff" data-rv>
+          <div class="casa-top">
+            <img src="/assets/beta.jpg" alt="Logo de Campus Beta" width="640" height="640" loading="lazy" decoding="async">
+            <div><h3>Campus Beta</h3><div class="rank">LA SEGUNDA SEDE</div></div>
+          </div>
+          <p>La fraternidad está creciendo. El segundo capítulo: el mismo descontrol en un barrio nuevo, con música, ambiente y fiesta.</p>
+          <address>CL 47 #14-22<span>Teusaquillo, Bogotá D.C.</span></address>
+          <div class="acts">
+            <a class="btn btn-fill" href="/beta">Entrar a Beta</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+47+14-22+Bogot%C3%A1" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn" href="https://instagram.com/campusbeta.bogota" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </article>
+
+        <article class="casa" style="--c:#2dff7f" data-rv="r">
+          <div class="casa-top">
+            <img src="/assets/gamma.jpg" alt="Logo de Campus Gamma" width="640" height="640" loading="lazy" decoding="async">
+            <div><h3>Campus Gamma</h3><div class="rank">LA SEDE DEL CENTRO</div></div>
+          </div>
+          <p>Nos tomamos el centro de la capital. La fraternidad llegó al corazón de Bogotá, diagonal a la estación Museo del Oro.</p>
+          <address>Av. Jiménez #05-40<span>Centro, Bogotá D.C.</span></address>
+          <div class="acts">
+            <a class="btn btn-fill" href="/gamma">Entrar a Gamma</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Jim%C3%A9nez+5-40+Bogot%C3%A1" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn" href="https://instagram.com/campusgamma.bogota" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="viaje" style="padding-top:0">
+    <div class="wrap">
+      <p class="kick" data-rv>El recorrido</p>
+      <h2 data-rv>Lo que acabas de cruzar.</h2>
+      <ol class="ruta">
+        <li style="--c:#ffb65c" data-rv><b>01</b><h3>La calle</h3><p>El centro de Bogotá de noche, con llovizna y faroles. Una puerta encendida: bienvenido a la fraternidad.</p></li>
+        <li style="--c:#ff3b2e" data-rv><b>02</b><h3>Casa Alfa</h3><p>Un pasillo de puertas rojas y brasas en el aire. Chapinero, Cll 60 #9-25: la sede donde empezó todo.</p></li>
+        <li style="--c:#2e6bff" data-rv><b>03</b><h3>Casa Beta</h3><p>Aros azules que respiran y burbujas que suben. Teusaquillo, CL 47 #14-22: la casa que sigue creciendo.</p></li>
+        <li style="--c:#2dff7f" data-rv><b>04</b><h3>Casa Gamma</h3><p>Triángulos de neón verde y láseres. Centro, Av. Jiménez #05-40: la sede que se tomó el centro.</p></li>
+        <li style="--c:#f2e9d2" data-rv><b>05</b><h3>La pista</h3><p>La bola de espejos y la gente de las tres casas formando una sola palabra: Campus.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec fin" style="padding-top:0">
+    <div class="wrap">
+      <h2 data-rv>Nos vemos en Campus.</h2>
+      <p class="lead" data-rv>Entra a la página de tu sede para ver el horario de la semana, la carta, los próximos eventos y cómo llegar.</p>
+      <div class="acts" data-rv>
+        <a class="btn btn-fill" href="/reservas/">Reservar mi parche</a>
+        <a class="btn btn-fill" style="--c:#ff3b2e" href="/alfa">Campus Alfa</a>
+        <a class="btn btn-fill" style="--c:#2e6bff" href="/beta">Campus Beta</a>
+        <a class="btn btn-fill" style="--c:#2dff7f" href="/gamma">Campus Gamma</a>
+        <a class="btn" href="#top">Repetir el viaje</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <b>CAMPUS · BOGOTÁ</b>
+    <nav aria-label="Pie"><a href="/">Inicio</a><a href="/alfa">Alfa</a><a href="/beta">Beta</a><a href="/gamma">Gamma</a><a href="/3d/">Viaje 3D</a><a href="/reservas/">Reservas</a><a href="/privacidad/">Privacidad</a></nav>
+    <span>Sitio por BASHI</span>
+  </div>
+</footer>
+
+<script src="viaje.js" defer></script>
+</body>
+</html>
